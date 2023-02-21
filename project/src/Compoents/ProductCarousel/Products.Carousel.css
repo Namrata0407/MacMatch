@@ -1,0 +1,52 @@
+.karu {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+.slick-list {
+  margin: 0 -10px;
+}
+
+.card {
+  border: 1px solid #fff;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;
+  height: 100%;
+  color: black;
+  cursor: pointer;
+}
+
+.card-top h1 {
+  font-size: 0.9rem;
+  margin: 20px;
+}
+
+.card-top > img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: black;
+}
+
+.card-bottom {
+  margin: 10px 20px;
+}
+
+.category {
+  position: relative;
+}
+.category::before {
+  content: "";
+  background: #f1f3f6;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  height: 2px;
+}
