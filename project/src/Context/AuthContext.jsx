@@ -1,5 +1,5 @@
 import { useState, createContext } from "react";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import { useToast } from "@chakra-ui/react";
 
 export const AuthContext = createContext();
@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   const [isAuth, setIsAuth] = useState(false);
   const [name, setName] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const toast = useToast();
 
   const loginUser = (data) => {
