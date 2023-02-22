@@ -1,9 +1,20 @@
-// import './App.css';
+// import logo from './logo.svg';
+import { useState } from 'react';
+import AdminNavbar from './Admin/Components/adminNavbar';
+import './App.css';
+import AllRoutes from './Components/AllRoutes';
 
-import EmptyCart from "./Components/EmptyCart";
 
 function App() {
-  return <div className="App">{/* <h1>this is our project</h1> */}</div>;
+  const [athenticated,setAuth] = useState(true);
+
+  return (
+    <div className="App">
+       {athenticated?  <AdminNavbar/> : <AllRoutes/>}
+    </div>
+  );
 }
 
 export default App;
+
+
