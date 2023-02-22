@@ -184,6 +184,7 @@ export default function Navbar() {
             fontWeight={400}
             variant={"link"}
             href={"#"}
+            color={'white'}
           >
             Cart : 0
           </Button>
@@ -193,6 +194,7 @@ export default function Navbar() {
             fontWeight={400}
             variant={"link"}
             href={"#"}
+            color={'white'}
           >
             Sign In
           </Button>
@@ -203,7 +205,7 @@ export default function Navbar() {
             fontWeight={600}
             color={"white"}
             bg={"gray.600"}
-            href={"#"}
+            href={"/signup"}
             _hover={{
               bg: "gray.500",
             }}
