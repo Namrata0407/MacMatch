@@ -1,18 +1,24 @@
-// import logo from './logo.svg';
-import { useState } from 'react';
-import AdminNavbar from './Admin/Components/adminNavbar';
-import './App.css';
-import AllRoutes from './Components/AllRoutes';
 
+
+
+import AllRoutes from "./Components/AllRoutes";
+import Navbar2 from "./Components/Navbar/Navbar2";
+import Navbar from './Components/Navbar/Navbar';
+import Footer from "./Components/Footer/Footer";
 
 function App() {
-  const [athenticated,setAuth] = useState(true);
-
   return (
     <div className="App">
-       {athenticated?  <AdminNavbar/> : <AllRoutes/>}
+      <Navbar />
+      <Navbar2 />
+
+      <AllRoutes/>
+
+      <Footer/>
     </div>
   );
+
+
 }
 
 export default App;

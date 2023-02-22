@@ -1,0 +1,14 @@
+.mainFooter {
+  background-color: rgb(247, 250, 252);
+  padding-top: 40px;
+}
+.mainFooterDiv {
+  width: 65%;
+  margin: auto;
+}
+.headLink{
+  font-size: 2px;
+}
+.link{
+  font-size: 12px;
+}

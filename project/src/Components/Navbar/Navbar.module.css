@@ -1,0 +1,56 @@
+.mainDiv {
+  background-color: rgba(24, 24, 24, 0.948);
+  color: white;
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+}
+.subMainDiv {
+  width: 65%;
+  border: 1px solid cyan transparent;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px;
+}
+.logo {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.optionLink {
+  text-decoration: none;
+  color: rgb(196, 194, 194);
+  font-size: 12px;
+  font-weight: 400;
+  padding: 3px;
+}
+.optionLink1 {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 400;
+  padding: 3px;
+}
+.mainDownNav {
+  background-color: rgb(45, 45, 47);
+  /* margin-top: -3px; */
+}
+.downNav {
+  width: 60%;
+  margin: auto;
+  border: 1px solid cyan transparent;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 8px;
+}
+.shopLink {
+  color: rgb(127, 127, 232);
+  text-decoration: none;
+}
+/* dropdown */
+.drop {
+  display: none;
+}
+.store:hover {
+  display: initial;
+}

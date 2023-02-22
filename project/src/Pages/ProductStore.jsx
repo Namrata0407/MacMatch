@@ -1,9 +1,10 @@
 import React from "react";
 import { Avatar, Box,  Text } from "@chakra-ui/react";
 
-import ProductsCarousel from "../Compoents/ProductCarousel/ProductsCarousel";
+import ProductsCarousel from "../Components/ProductCarousel/ProductsCarousel";
 import { BsFillEmojiLaughingFill,BsApple } from "react-icons/bs";
-import ShopWithUs from "../Compoents/shopWithUs";
+import ShopWithUs from "../Components/shopWithUs";
+import AllProducts from "../Components/AllProducts";
 const ProductStore = () => {
     const data=[
         {
@@ -174,10 +175,10 @@ const ProductStore = () => {
             }}
             alignItems="center"
           >
-            <Avatar src="https://user-images.githubusercontent.com/112806398/220353814-ab6da085-d12a-4b06-bbef-2e11acfd4bca.jpg" />
+            <Avatar src="https://user-images.githubusercontent.com/112806398/220563190-ba788396-7d61-4641-8e6c-e08bf4afc66c.png" />
             <Text>
-              Need shopping help? <br />
-              <span style={{ color: "#2f6fd6" }}>Ask a Specialist</span>
+            Visit an Mac Match Store <br />
+              <span style={{ color: "#2f6fd6" }}>Find one near you </span>
             </Text>
           </Box>
         </Box>
@@ -186,7 +187,7 @@ const ProductStore = () => {
 <ProductsCarousel data={data} bg="#212226"/>
       </Box>
       <Box w="100%" bg="#f5f5f7" p="20px" textAlign={"center"} fontFamily={"SF Pro Display, SF Pro Icons, AOS Icons, Helvetica Neue, Helvetica, Arial, sans-serif"}>
-<Text fontSize={{base:"16px",sm:"16px",md:"18px",lg:"28px",xl:"28px","2xl":"28px"}} lineHeight="32px" fontWeight={"600"}><span style={{color:"#1d1d1f"}}>The Apple Store difference.</span> <span style={{color:"#6e6e73"}}>Even more reasons to shop with us.</span></Text>
+<Text fontSize={{base:"16px",sm:"16px",md:"18px",lg:"28px",xl:"28px","2xl":"28px"}} lineHeight="32px" fontWeight={"600"}><span style={{color:"#1d1d1f"}}>The Mac Match Store difference.</span> <span style={{color:"#6e6e73"}}>Even more reasons to shop with us.</span></Text>
      
 
       </Box>
@@ -204,7 +205,7 @@ const ProductStore = () => {
 </Box>
 </Box>
 </Box>
-
+<AllProducts/>
 
     </Box>
   );
