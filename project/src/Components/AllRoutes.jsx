@@ -1,8 +1,9 @@
 import { Route } from "react-router";
 import { Routes } from "react-router-dom";
-import PrivateRoute from './../PrivateRoute/PrivateRoute';
-import Body from './Body/Body';
+// import PrivateRoute from './../PrivateRoute/PrivateRoute';
 import Signup from './../Pages/Signup/Signup';
+import Body from './../Pages/HomePage/Body/Body';
+
 
 
 const AllRoutes = () => {

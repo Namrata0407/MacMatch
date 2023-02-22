@@ -26,12 +26,12 @@ import logo from "../Kausik_Assets/MAC_MATCH.png";
 const NAV_ITEMS = [
   {
     label: "Store",
-    href: "#",
+    href:'/signup',
     children: [
       {
         label: "MacBook Air",
         subLabel: "Explore our wide range of collection",
-        href: "#",
+        href: "/signup",
       },
       {
         label: "MacBook Pro",
@@ -92,7 +92,7 @@ const NAV_ITEMS = [
   },
   {
     label: "iPad",
-    href: "#",
+    href: "/signup",
   },
   {
     label: "iPhone",
@@ -183,7 +183,7 @@ export default function Navbar() {
             fontSize={"sm"}
             fontWeight={400}
             variant={"link"}
-            href={"#"}
+            href={"/cart"}
             color={'white'}
           >
             Cart : 0
@@ -193,7 +193,7 @@ export default function Navbar() {
             fontSize={"sm"}
             fontWeight={400}
             variant={"link"}
-            href={"#"}
+            href={"/signin"}
             color={'white'}
           >
             Sign In
@@ -235,7 +235,7 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Link
                 p={2}
-                href={navItem.href ?? "#"}
+                to={navItem.href ?? "#"}
                 fontSize={"sm"}
                 fontWeight={500}
                 _hover={{
@@ -274,7 +274,7 @@ const DesktopNav = () => {
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
     <Link
-      href={href}
+      to={href}
       role={"group"}
       display={"block"}
       p={2}
@@ -372,7 +372,7 @@ const MobileNavItem = ({ label, children, href }) => {
         >
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
+              <Link key={child.label} py={2} to={child.href}>
                 {child.label}
               </Link>
             ))}
