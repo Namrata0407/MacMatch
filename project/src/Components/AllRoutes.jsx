@@ -8,6 +8,7 @@ import LoginAdmin from './../Pages/LoginAdmin/LoginAdmin';
 
 
 
+
 const AllRoutes = () => {
   return (
     <Routes>
@@ -29,3 +30,4 @@ const AllRoutes = () => {
 };
 
 export default AllRoutes;
+
