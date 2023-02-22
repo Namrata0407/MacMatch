@@ -40,6 +40,7 @@ function Signup() {
       duration: 9000,
       isClosable: true,
     })
+
   }
 // all toasts are here
   const postdata = async () => {
@@ -61,6 +62,9 @@ function Signup() {
         // alert("Email already exist");
         emailExist()
         setload(false);
+      }else{
+        signupSuccess();
+        navigate("/signin");
       }
     }catch(err){
       console.log(err);
@@ -82,15 +86,14 @@ function Signup() {
           gender,
           profile:
             "https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/vendor/u1.jpg",
-          orders: [],
         }),
       });
       let data = await res.json();
       console.log(data);
       setload(false);
       // alert("Signup Successfull!");
-      signupSuccess();
-      navigate("/login");
+      // signupSuccess();
+      // navigate("/signin");
     } catch (error) {
       setload(false);
       console.log(error);

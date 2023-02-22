@@ -14,6 +14,7 @@ import {
   useBreakpointValue,
   useDisclosure,
   Heading,
+  Input,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -25,13 +26,15 @@ import { Link } from "react-router-dom";
 import logo from "../Kausik_Assets/MAC_MATCH.png";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
+import {FaSearchPlus} from 'react-icons/fa'
+import {BsFillBagCheckFill} from 'react-icons/bs'
 
 let authentication = localStorage.getItem("name");
 
 const NAV_ITEMS = [
   {
     label: "Store",
-    href: "/signup",
+    href: "/store",
     children: [
       {
         label: "MacBook Air",
@@ -82,22 +85,11 @@ const NAV_ITEMS = [
   },
   {
     label: "Mac",
-    children: [
-      {
-        label: "Job Board",
-        subLabel: "Find your dream design job",
-        href: "#",
-      },
-      {
-        label: "Freelance Projects",
-        subLabel: "An exclusive list for contract work",
-        href: "#",
-      },
-    ],
+    href: "/",
   },
   {
     label: "iPad",
-    href: "/signup",
+    href: "/",
   },
   {
     label: "iPhone",
@@ -125,6 +117,14 @@ const NAV_ITEMS = [
   },
   {
     label: "Support",
+    href: "#",
+  },
+  {
+    label: <Input padding={'5px'} fontSize={'16px'} height={'25px'}/>,
+    href: "#",
+  },
+  {
+    label: <div style={{marginTop:'4px'}}><FaSearchPlus /></div>,
     href: "#",
   },
 ];
@@ -166,9 +166,9 @@ export default function Navbar() {
             <Link to={"/"}>
               <img
                 src={logo}
-                width={"18px"}
+                width={"24px"}
                 alt="logo"
-                style={{ marginTop: "5px" }}
+                style={{ marginTop: "3px" }}
               />
             </Link>
           </Text>
@@ -184,25 +184,21 @@ export default function Navbar() {
           direction={"row"}
           spacing={6}
         >
-          <Button
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            href={"/cart"}
-            color={"white"}
-          >
-            Cart : 0
-          </Button>
+          
           {authentication ? (
             <>
-              <Button>{localStorage.getItem("name")}❤️</Button>
               <Button
-                onClick={logoutUser}
-                
+                as={"a"}
+                fontSize={"sm"}
+                fontWeight={400}
+                variant={"link"}
+                href={"/cart"}
+                color={"white"}
               >
-                Logout
+               <BsFillBagCheckFill/><span style={{marginLeft:'4px'}}>Cart : 0</span> 
               </Button>
+              <Button>{localStorage.getItem("name")}❤️</Button>
+              <Button href={"/signin"} onClick={logoutUser}>Logout</Button>
             </>
           ) : (
             <>
@@ -266,6 +262,7 @@ const DesktopNav = () => {
               >
                 <p style={{ color: "rgb(196, 194, 194)" }}>{navItem.label}</p>
               </Link>
+              
             </PopoverTrigger>
 
             {navItem.children && (
@@ -288,6 +285,7 @@ const DesktopNav = () => {
           </Popover>
         </Box>
       ))}
+      
     </Stack>
   );
 };
