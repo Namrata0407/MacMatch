@@ -46,7 +46,7 @@ function Signup() {
     setload(true);
     // for verify same email
     try {
-      let res = await fetch(`http://localhost:8080/users`);
+      let res = await fetch(`https://thankful-loafers-hare.cyclic.app/usersData`);
       let data = await res.json();
       console.log(data);
       var mailAuth = false;
@@ -69,7 +69,7 @@ function Signup() {
     console.log("mailAuth",mailAuth)
     // for normal signup
   if(!mailAuth){  try {
-      let res = await fetch(`http://localhost:8080/users`, {
+      let res = await fetch(`https://thankful-loafers-hare.cyclic.app/usersData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -157,8 +157,8 @@ function Signup() {
           </FormHelperText>
           <FormHelperText>
             If have an account click{" "}
-            <Link color="blue" fontWeight={'600'} href="/login">
-              Log in
+            <Link color="blue" fontWeight={'600'} href="/signin">
+              Sign in
             </Link>
           </FormHelperText>
           {load ? (

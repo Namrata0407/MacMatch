@@ -57,10 +57,10 @@ function LoginAdmin() {
       <div className={styles.mainDiv}>
         <Heading
           fontFamily="cursive"
-          color="rgb(255, 81, 0)"
+          color="rgb(45,45,47)"
           textAlign="center"
         >
-          Admin Log in
+          Admin Sign in
         </Heading>
         <FormControl>
           <FormLabel>Email address</FormLabel>
@@ -83,7 +83,7 @@ function LoginAdmin() {
           </FormHelperText>
           <FormHelperText>
             If have no account click{" "}
-            <Link color="rgb(255, 81, 0)" href="/signup">
+            <Link color="blue" fontWeight={'600'} href="/signup">
               Signup
             </Link>
           </FormHelperText>
@@ -92,10 +92,13 @@ function LoginAdmin() {
             marginLeft="42%"
             marginTop="30px"
             color="white"
-            background="rgb(255, 81, 0)"
+            background="rgb(45,45,47)"
+            _hover={{
+              bg: "rgb(4,4,4)",
+            }}
             onClick={submitLogin}
           >
-            <span className={styles.loginButton}>Log in</span>
+            <span className={styles.loginButton}>Sign in</span>
           </Button>
         </FormControl>
       </div>

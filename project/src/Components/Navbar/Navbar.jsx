@@ -13,6 +13,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Heading,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -22,11 +23,15 @@ import {
 } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import logo from "../Kausik_Assets/MAC_MATCH.png";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
+
+let authentication = localStorage.getItem("name");
 
 const NAV_ITEMS = [
   {
     label: "Store",
-    href:'/signup',
+    href: "/signup",
     children: [
       {
         label: "MacBook Air",
@@ -126,6 +131,7 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  const { logoutUser } = useContext(AuthContext);
 
   return (
     <Box position={"sticky"} top={"0px"} zIndex={"1000"}>
@@ -184,34 +190,49 @@ export default function Navbar() {
             fontWeight={400}
             variant={"link"}
             href={"/cart"}
-            color={'white'}
+            color={"white"}
           >
             Cart : 0
           </Button>
-          <Button
-            as={"a"}
-            fontSize={"sm"}
-            fontWeight={400}
-            variant={"link"}
-            href={"/signin"}
-            color={'white'}
-          >
-            Sign In
-          </Button>
-          <Button
-            as={"a"}
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"gray.600"}
-            href={"/signup"}
-            _hover={{
-              bg: "gray.500",
-            }}
-          >
-            Sign Up
-          </Button>
+          {authentication ? (
+            <>
+              <Button>{localStorage.getItem("name")}❤️</Button>
+              <Button
+                onClick={logoutUser}
+                
+              >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                as={"a"}
+                fontSize={"sm"}
+                fontWeight={400}
+                variant={"link"}
+                href={"/signin"}
+                color={"white"}
+              >
+                Sign In
+              </Button>
+              <Button
+                as={"a"}
+                display={{ base: "none", md: "inline-flex" }}
+                fontSize={"sm"}
+                fontWeight={600}
+                color={"white"}
+                bg={"gray.600"}
+                href={"/signup"}
+                _hover={{
+                  bg: "gray.500",
+                }}
+              >
+                Sign Up
+              </Button>
+            </>
+          )}
+          {/*  */}
         </Stack>
       </Flex>
 

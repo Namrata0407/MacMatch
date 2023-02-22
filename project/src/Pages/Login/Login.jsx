@@ -48,7 +48,7 @@ function Login() {
     setload(true);
     // console.log(load);
     try {
-      let res = await fetch(`http://localhost:8080/users`);
+      let res = await fetch(`https://thankful-loafers-hare.cyclic.app/usersData`);
       let data = await res.json();
       // console.log(data);
       let Auth = false;
@@ -75,11 +75,11 @@ function Login() {
       console.log(Auth);
     } catch (error) {
       setload(false);
-
       console.log(error);
     }
     setemail("");
     setPassword("");
+    window.location.reload()
   };
 
   return (
@@ -87,10 +87,10 @@ function Login() {
       <div className={styles.mainDiv}>
         <Heading
           fontFamily="cursive"
-          color="rgb(255, 81, 0)"
+          color="rgb(45,45,47)"
           textAlign="center"
         >
-          Log in
+          Sign in
         </Heading>
         <FormControl>
           <FormLabel>Email address</FormLabel>
@@ -113,14 +113,14 @@ function Login() {
           </FormHelperText>
           <FormHelperText>
             If have no account click{" "}
-            <Link color="rgb(255, 81, 0)" href="/signup">
+            <Link color="blue" href="/signup" fontWeight={'600'}>
               Signup
             </Link>
           </FormHelperText>
           <FormHelperText>
             Go to admin panel{" "}
-            <Link color="rgb(255, 81, 0)" href="/loginadmin">
-              Login
+            <Link color="blue" fontWeight={'600'} href="/signinadmin">
+              Signin
             </Link>
           </FormHelperText>
           <Button
@@ -128,10 +128,13 @@ function Login() {
             marginLeft="42%"
             marginTop="30px"
             color="white"
-            background="rgb(255, 81, 0)"
+            background="rgb(45,45,47)"
             onClick={submitLogin}
+            _hover={{
+              bg: "rgb(4,4,4)",
+            }}
           >
-            <span className={styles.loginButton}>Log in</span>
+            <span className={styles.loginButton}>Sign in</span>
           </Button>
         </FormControl>
       </div>

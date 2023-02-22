@@ -3,6 +3,8 @@ import { Routes } from "react-router-dom";
 // import PrivateRoute from './../PrivateRoute/PrivateRoute';
 import Signup from './../Pages/Signup/Signup';
 import Body from './../Pages/HomePage/Body/Body';
+import Login from './../Pages/Login/Login';
+import LoginAdmin from './../Pages/LoginAdmin/LoginAdmin';
 
 
 
@@ -11,6 +13,8 @@ const AllRoutes = () => {
     <Routes>
       <Route path="/" element={<Body />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/signin" element={<Login />} />
+      <Route path="/signinadmin" element={<LoginAdmin />} />
       
       {/* <Route
         path="/addProduct"
