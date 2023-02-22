@@ -24,7 +24,7 @@ import {
 } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import logo from "../Kausik_Assets/MAC_MATCH.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import {FaSearchPlus} from 'react-icons/fa'
 import {BsFillBagCheckFill} from 'react-icons/bs'
@@ -119,17 +119,18 @@ const NAV_ITEMS = [
     label: "Support",
     href: "#",
   },
+  // {
+  //   label: <Input value={query} padding={'5px'} fontSize={'16px'} height={'25px'}/>,
+  //   href: "#",
+  // },
   {
-    label: <Input padding={'5px'} fontSize={'16px'} height={'25px'}/>,
-    href: "#",
-  },
-  {
-    label: <div style={{marginTop:'4px'}}><FaSearchPlus /></div>,
+    label: <div style={{marginTop:'4px'}}><FaSearchPlus onClick={()=>console.log('humTum')} /></div>,
     href: "#",
   },
 ];
 
 export default function Navbar() {
+  const [query,setQuery] = useState('')
   const { isOpen, onToggle } = useDisclosure();
   const { logoutUser } = useContext(AuthContext);
 
@@ -153,7 +154,7 @@ export default function Navbar() {
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
             }
-            variant={"ghost"}
+            // variant={"ghost"}
             aria-label={"Toggle Navigation"}
           />
         </Flex>
@@ -173,7 +174,7 @@ export default function Navbar() {
             </Link>
           </Text>
 
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          <Flex display={{ base: "none", md: "none",lg:'flex' }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
@@ -261,6 +262,7 @@ const DesktopNav = () => {
                 }}
               >
                 <p style={{ color: "rgb(196, 194, 194)" }}>{navItem.label}</p>
+                
               </Link>
               
             </PopoverTrigger>
