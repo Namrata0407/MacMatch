@@ -14,6 +14,7 @@ import {
     RadioGroup,
     Radio,
     Text,
+    Box,
   } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
@@ -52,9 +53,11 @@ export default function FilterSortDrawer() {
         }, [filterValues,sortValues])
     return (
       <>
-        <Button ref={btnRef} bg="black" color="white" _hover={{bg:"black"}} onClick={onOpen}  display="block" m="auto" mt="20px">
+       <Box w="100%" zIndex={"55"} bg="#f5f5f7" position={"sticky"} top="0" h="8rem">
+       <Button  top="4rem"  ref={btnRef} bg="black" color="white" _hover={{bg:"black"}} onClick={onOpen}  display="block" m="auto" mt="20px">
         Press To Filter & Sort Your Products
         </Button>
+       </Box>
         <Drawer
           isOpen={isOpen}
           placement='left'

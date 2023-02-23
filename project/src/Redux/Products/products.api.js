@@ -1,28 +1,31 @@
 import axios from "axios";
 
-export const getDataApi = async (getProductsParam,pageNo,limitval) => {
+export const getDataApi = async (getProductsParam="",pageNo,limitval=6) => {
   try {
     let res = await axios.get(
       `https://thankful-loafers-hare.cyclic.app/apple?_page=${pageNo}&_limit=${limitval}`,
       getProductsParam
     );
-  
-    return res.data;
+  // console.log(res.headers["x-total-count"])
+    return res;
   } catch (er) {
     console.log(er);
   }
 };
 
-export const UpdataDataApi = async (data) => {
+export const UpdataDataApi =async ({...data}) => {
   try {
     let res = await axios.patch(
       `https://thankful-loafers-hare.cyclic.app/apple/${data.id}`,
       { ...data }
     );
-    return res.data;
+    let resData=res.data;
+    return resData;
   } catch (er) {
-    console.log(er);
+     console.log(er);
   }
+
+
 };
 
 export const DeleteDataApi = async (id) => {
@@ -30,7 +33,8 @@ export const DeleteDataApi = async (id) => {
     let res = await axios.delete(
       `https://thankful-loafers-hare.cyclic.app/apple/${id}`
     );
-    return res.data;
+    let data=res.data;
+    return data;
   } catch (er) {
     console.log(er);
   }
@@ -39,7 +43,8 @@ export const DeleteDataApi = async (id) => {
 export const PostDataApi=async(data)=>{
     try{
         let res=await axios.post('https://thankful-loafers-hare.cyclic.app',{...data})
-        return res.data;
+        let data=res.data;
+        return data;
     }
     catch(er){
         console.log(er)
@@ -47,13 +52,3 @@ export const PostDataApi=async(data)=>{
 }
 
 
-export const getTotalDataApi=async()=>{
-  try{
-let res=await axios.get('https://thankful-loafers-hare.cyclic.app/apple');
-return res.data;
-  }
-
-  catch(er){
-    console.log(er)
-  }
-}

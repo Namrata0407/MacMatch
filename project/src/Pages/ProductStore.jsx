@@ -1,10 +1,12 @@
 import React from "react";
 import { Avatar, Box,  Text } from "@chakra-ui/react";
 
-import ProductsCarousel from "../Components/ProductCarousel/ProductsCarousel";
+// import ProductsCarousel from "../Components/ProductCarousel/ProductsCarousel";
+
 import { BsFillEmojiLaughingFill,BsApple } from "react-icons/bs";
 import ShopWithUs from "../Components/shopWithUs";
 import AllProducts from "../Components/AllProducts";
+import ProductsCarousel from "../Components/ProductCarousel/ProductsCarousel";
 const ProductStore = () => {
     const data=[
         {
@@ -104,8 +106,16 @@ const ProductStore = () => {
             "2xl": "48px",
           }}
           display="flex"
-          justifyContent={"flex-end"}
+          justifyContent={{
+            base: "center",
+            sm: "center",
+            md: "center",
+            lg: "flex-end",
+            xl: "flex-end",
+            "2xl": "flex-end",
+          }}
           alignItems="right"
+          
         >
           <Text
             textAlign={{

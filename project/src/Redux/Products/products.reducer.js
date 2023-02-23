@@ -10,12 +10,13 @@ import {
   GET_LIMITED_PRODUCTS
 } from "./products.actions.types";
 
-const initialState = {
+let initialState = {
   loading: false,
+  page:1,
   error: false,
-  totalProducts:[],
+  productCount:0,
   products: [],
-  page:1
+  
 };
 export const ProductReducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -26,14 +27,7 @@ export const ProductReducer = (state = initialState, { type, payload }) => {
       };
     }
 
-    case PRODUCT_SUCCESS: {
-     
-      return {
-        ...state,
-        loading: false,
-        totalProducts: payload,
-      };
-    }
+ 
     case PRODUCT_ERROR: {
       return {
         ...state,
@@ -41,44 +35,37 @@ export const ProductReducer = (state = initialState, { type, payload }) => {
         error: true,
       };
     }
-    case GET_TOTAL_PRODUCTS:{
-      return{
-        ...state,loading:false,totalProducts:payload
-
-      }
-    }
+  
     case GET_LIMITED_PRODUCTS:{
       return{
-        ...state,products:payload
+        ...state,products:payload.data,productCount:payload.headers["x-total-count"]
       }
     }
     case PRODUCT_ADD:{
       return{
-        ...state,totalProducts:[...state.totalProducts,payload]
+        ...state,products:[...state.products,payload]
       }
     }
     case PRODUCT_UPDATE:{
-      let data=state.totalProducts.map((el)=>el.id===payload.id ?{...payload}:el)
+      let data=state.products.map((el)=>el.id===payload.id?payload:el)
       return{
-        ...state,totalProducts:data
+        ...state,products:data
       }
     }
     case PRODUCT_DELETE:{
-      let data=state.totalProducts.filter((el)=>el.id!==payload);
+      let data=state.products.filter((el)=>el.id!==payload);
       return{
-        ...state,totalProducts:data
+        ...state,products:data
       }
     }
     case INCREASE_PAGE:{
-      console.log(payload,"red")
+   
       return{
         ...state,page:payload
       }
     }
     default: {
-      return {
-        state,
-      };
+      return state;
     }
   }
 };
