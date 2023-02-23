@@ -1,4 +1,4 @@
-import * as types from "./admin.actionType";
+import * as types from "./admin.actionTypes";
 import { getAdminDataFromAPI, postAdminDataFromAPI } from "./admin.api";
 
 const handleAdminGetDataRequest = ()=>{

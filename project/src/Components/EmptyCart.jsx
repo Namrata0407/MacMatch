@@ -32,17 +32,10 @@ const EmptyCart = () => {
           Your bag is empty.
         </Text>
         <Text>
-          Sign in to see if you have any saved items. Or continue shopping.
+          Buy online and get free two-day delivery on all in-stock items and
+          free next-day delivery on iPhone.
         </Text>
         <Flex justify={"start"} gap="30px">
-          <Button
-            bgColor={"#0071e3"}
-            borderRadius={"20px"}
-            py={"30px"}
-            px={"120px"}
-          >
-            Sign In
-          </Button>
           <Button
             bgColor={"#ebebeb"}
             color="black"
@@ -85,7 +78,7 @@ const EmptyCart = () => {
             <Text fontWeight={400}> Check out the latest accessories.</Text>
 
             <Text color="blue" fontWeight={400}>
-              Shop 
+              Shop
             </Text>
           </Box>
         </Box>
