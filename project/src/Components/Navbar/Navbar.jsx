@@ -28,6 +28,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { FaSearchPlus } from "react-icons/fa";
 import { BsFillBagCheckFill } from "react-icons/bs";
+import styles from "./Navbar.module.css";
 
 let authentication = localStorage.getItem("name");
 
@@ -158,14 +159,13 @@ export default function Navbar() {
             <Link to={"/"}>
               <img
                 src={logo}
-                width={"24px"}
                 alt="logo"
-                style={{ marginTop: "3px" }}
+                className={styles.logo}
               />
             </Link>
           </Text>
 
-          <Flex display={{ base: "none", md: "none", lg: "flex" }} ml={10}>
+          <Flex display={{ base: "none", md: "flex", lg: "flex" }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
@@ -185,12 +185,13 @@ export default function Navbar() {
                 variant={"link"}
                 href={"/cart"}
                 color={"white"}
+
               >
                 <BsFillBagCheckFill />
                 <span style={{ marginLeft: "4px" }}>Cart : 0</span>
               </Button>
-              <Button>{localStorage.getItem("name")}❤️</Button>
-              <Button href={"/signin"} onClick={logoutUser}>
+              <Button className={styles.name}>{localStorage.getItem("name")}❤️</Button>
+              <Button className={styles.name} href={"/signin"} onClick={logoutUser}>
                 Logout
               </Button>
             </>
@@ -843,7 +844,7 @@ const DesktopNav = () => {
                   color: linkHoverColor,
                 }}
               >
-                <p style={{ color: "rgb(196, 194, 194)" }}>{navItem.label}</p>
+                <p className={styles.label} style={{ color: "rgb(196, 194, 194)" }}>{navItem.label}</p>
               </Link>
             </PopoverTrigger>
 
@@ -874,8 +875,9 @@ const DesktopNav = () => {
         fontSize={"16px"}
         height={"25px"}
         color={"white"}
+        className={styles.searchInput}
       />
-      <div style={{ marginTop: "4px", color: "white" }}>
+      <div className={styles.searchLogo} style={{ marginTop: "4px", color: "white" }}>
         <span style={{ cursor: "pointer" }}>
           <FaSearchPlus
             cursor={"pointor"}
