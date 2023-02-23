@@ -22,15 +22,22 @@ const getCartSuccess = (payload) => {
 
 const addToCart = (payload) => {
   return {
-    type: types.ADD_TO_CART,
+    type: types.ADD_TO_CART_SUCCESS,
     payload,
+  };
+};
+
+const deleteCart = (id) => {
+  return {
+    type: types.DELETE_CART_SUCCESS,
+    payload: id,
   };
 };
 
 export const getCartProduct = () => async (dispatch) => {
   try {
     dispatch(cartRequest());
-    const res = await getCartProductAPI();
+    let res = await getCartProductAPI();
     dispatch(getCartSuccess(res));
   } catch (err) {
     dispatch(cartError());
@@ -51,6 +58,8 @@ export const removeCartItem = (id) => async (dispatch) => {
   try {
     dispatch(cartRequest());
     const res = await removeCartItemAPI(id);
+    dispatch(getCartProduct());
+    // dispatch(deleteCart(id));
   } catch (error) {
     dispatch(cartError());
   }

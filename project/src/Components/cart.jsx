@@ -1,24 +1,41 @@
 import { Box, Button, Flex, Grid, Image, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { removeCartItem } from "../Redux/cart/cart.action";
 
-const Cart = ({ title, category, img, price, description }) => {
+const Cart = ({
+  id,
+  title,
+  category,
+  img,
+  price,
+  description,
+  handleTotalPrice,
+}) => {
   const [quantity, setQuantity] = useState(1);
   const [qPrice, setQPrice] = useState(0);
   const [total, setTotal] = useState(0);
+  const dispatch = useDispatch();
 
   const handleQuantityChange = (value) => {
     setQuantity(value);
   };
 
+  const handleTotal = () => {
+    handleTotalPrice();
+  };
+
+  const handleRemoveButton = async (id) => {
+    dispatch(removeCartItem(id));
+  };
+
   useEffect(() => {
     setQPrice((quantity * price).toFixed(2));
-    setTotal((quantity * price).toFixed(2))
+    handleTotal();
   }, [quantity]);
 
-
-
   return (
-    <Box  w="80%" m={"auto"}>
+    <Box w="80%" m={"auto"}>
       <Flex
         direction={{ base: "column", md: "row", lg: "row" }}
         mb={4}
@@ -42,7 +59,7 @@ const Cart = ({ title, category, img, price, description }) => {
           w={"80%"}
           mb={4}
           justify="space-between"
-        //   border="1px solid red"
+          //   border="1px solid red"
           p={4}
         >
           {" "}
@@ -78,7 +95,13 @@ const Cart = ({ title, category, img, price, description }) => {
               <Text>Get up to ₹20809.00 savings with eligible card(s)^</Text>
               <Text textAlign={"end"}>₹39983.00/mo.^</Text>
             </Box>
-            <Button size="sm" variant="outline" colorScheme="red" ml={4}>
+            <Button
+              size="sm"
+              variant="outline"
+              colorScheme="red"
+              ml={4}
+              onClick={() => handleRemoveButton(id)}
+            >
               Remove
             </Button>
           </Grid>
