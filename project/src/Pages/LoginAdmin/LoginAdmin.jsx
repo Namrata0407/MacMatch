@@ -23,7 +23,7 @@ function LoginAdmin() {
     setload(true);
     // console.log(load);
     try {
-      let res = await fetch(`http://localhost:8080/admin`);
+      let res = await fetch(`https://thankful-loafers-hare.cyclic.app/admin`);
       let data = await res.json();
       // console.log(data);
       let Auth = false;

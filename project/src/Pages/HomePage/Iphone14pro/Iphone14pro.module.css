@@ -1,5 +1,5 @@
-.mainDiv{
-  border: 1px solid black;
+.mainDiv {
+  border: 1px solid black transparent;
 }
 .allHeading {
   color: white;
@@ -17,5 +17,36 @@
   color: rgb(163, 160, 160);
   margin-left: 33%;
   font-size: 14px;
+}
+.pro {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 600;
+}
+.beyond {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+}
+.lmbm {
+  text-align: center;
+  font-size: 25px;
+  color: rgb(86, 86, 255);
+}
 
+@media screen and (max-width: 475px) {
+  /* .allHeading {
+    margin-top: 10px;
+    left: 28%;
+    width: 45%;
+    border: 1px solid cyan;
+  }
+  .button {
+    padding: 3px;
+    border-radius: 100px;
+    margin-top: 5px;
+    color: rgb(163, 160, 160);
+    margin-left: 32%;
+    font-size: 8px;
+  } */
 }

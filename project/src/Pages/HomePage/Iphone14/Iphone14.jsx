@@ -3,18 +3,18 @@ import React from "react";
 import iPhone from "../Kausik_Assets/iPhone14.jpg";
 import styles from "./Iphone14.module.css";
 
-const Iphone14= () => {
+const Iphone14 = () => {
   return (
     <div className={styles.mainDiv}>
       <div className={styles.allHeading}>
-        <Heading textAlign={'center'} fontSize={'5xl'} fontWeight={'semibold'}>iPhone 14</Heading>
-        <Heading mt={'10px'} textAlign={'center'} fontSize={'2xl'} fontWeight={'semibold'}>Pro. Beyond</Heading>
+        <h1  className={styles.pro}>iPhone 14</h1>
+        <h1 className={styles.beyond}>Big and bigger.</h1>
         <button className={styles.button}>With superfast 5G*</button>
-        <Heading mt={'10px'} textAlign={'center'} fontSize={'2xl'} fontWeight={'normal'} color={'blue.600'}>Learn more &gt; Buy &gt; </Heading>
+        <h1 className={styles.lmbm}>Learn more &gt; Buy &gt; </h1>
       </div>
-      <img src={iPhone} alt="iphone" width={'100%'}/>
+      <img src={iPhone} alt="iphone" width={'100%'} />
     </div>
   );
 };
 
-export default Iphone14;
+export default Iphone14
