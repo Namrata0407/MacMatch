@@ -1,6 +1,3 @@
-
-
-
 import AllRoutes from "./Components/AllRoutes";
 import Navbar2 from "./Components/Navbar/Navbar2";
 import Navbar from './Components/Navbar/Navbar';
@@ -22,5 +19,3 @@ function App() {
 }
 
 export default App;
-
-

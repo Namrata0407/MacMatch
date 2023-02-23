@@ -1,13 +1,13 @@
 import * as types from "./cart.types";
 
 const initialValue = {
-  isLoading: false,
-  isError: false,
   cart: [],
   order: [],
+  isLoading: false,
+  isError: false,
 };
 
-export const reducer = (state = initialValue, action) => {
+const reducer = (state = initialValue, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -31,14 +31,23 @@ export const reducer = (state = initialValue, action) => {
         isError: true,
       };
 
-    case types.ADD_TO_CART:
+    case types.ADD_TO_CART_SUCCESS:
       return {
         ...state,
         isLoading: false,
         cart: [...state.cart, payload],
       };
 
+    case types.DELETE_CART_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        cart: state.cart.filter((item) => item.id !== payload),
+      };
+
     default:
       return state;
   }
 };
+
+export { reducer };
