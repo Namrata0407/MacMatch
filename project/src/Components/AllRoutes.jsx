@@ -5,6 +5,12 @@ import Body from './../Pages/HomePage/Body/Body';
 import Login from './../Pages/Login/Login';
 import LoginAdmin from './../Pages/LoginAdmin/LoginAdmin';
 
+import ProductStore from "../Pages/ProductStore";
+import SingleProductPage from "../Pages/SingleProductPage";
+
+
+
+
 const AllRoutes = () => {
   return (
     <Routes>
@@ -12,8 +18,8 @@ const AllRoutes = () => {
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Login />} />
       <Route path="/signinadmin" element={<LoginAdmin />} />
-      <Route path="/product/:id" element={
-      <h1>Akash product page</h1>}
+      <Route path="/store" element={<ProductStore/>}/>
+      <Route path="/product/:id" element={<SingleProductPage/>}
       />
       
       {/* <Route
