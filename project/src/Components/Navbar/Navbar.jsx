@@ -775,7 +775,7 @@ const DesktopNav = () => {
       let newSuggestions = products.filter((item) => {
         return item.title
           .split(" ")
-          .join("")
+          .join(" ")
           .trim()
           .toLowerCase()
           .indexOf(throttledText) !== -1
