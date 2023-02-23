@@ -13,7 +13,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-  // Heading,
+
   Input,
 } from "@chakra-ui/react";
 import {
@@ -26,9 +26,11 @@ import { Link } from "react-router-dom";
 import logo from "../Kausik_Assets/MAC_MATCH.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
+
 import { FaSearchPlus } from "react-icons/fa";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import styles from "./Navbar.module.css";
+
 
 let authentication = localStorage.getItem("name");
 
@@ -120,6 +122,14 @@ const NAV_ITEMS = [
     label: "Support",
     href: "#",
   },
+  {
+    label: <Input padding={'5px'} fontSize={'16px'} height={'25px'}/>,
+    href: "#",
+  },
+  {
+    label: <div style={{marginTop:'4px'}}><FaSearchPlus /></div>,
+    href: "#",
+  },
 ];
 
 export default function Navbar() {
@@ -178,13 +188,20 @@ export default function Navbar() {
         >
           {authentication ? (
             <>
-              <Button
+
+            <Button
                 as={"a"}
                 fontSize={"sm"}
                 fontWeight={400}
                 variant={"link"}
                 href={"/cart"}
                 color={"white"}
+              >
+               <BsFillBagCheckFill/><span style={{marginLeft:'4px'}}>Cart : 0</span> 
+              </Button>
+              <Button>{localStorage.getItem("name")}❤️</Button>
+              <Button
+                onClick={logoutUser}
 
               >
                 <BsFillBagCheckFill />

@@ -23,6 +23,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Image,
 } from '@chakra-ui/react';
 import {
   FiHome,
@@ -42,6 +43,8 @@ import { FiUsers } from "react-icons/fi";
 import AdminDashboard from '../Pages/AdminDashboard';
 import { Route, Routes } from 'react-router-dom';
 import AdiminRoutes from './AdminRoutes';
+import logo from "../Images/logo.png";
+
 
 const LinkItems = [
   { name: 'Dashboard',path: "/", icon: FiHome },
@@ -99,9 +102,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
         h="full"
         {...rest}>
         <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-          <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+          {/* <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
             Logo
-          </Text>
+          </Text> */}
+          <Box><Image src={logo} alt="error" border={"1px solid black"} borderRadius={"50%"}  width={"70px"} height={"70px"}/></Box>
+          
           <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
         </Flex>
         {LinkItems.map((link) => (
@@ -192,7 +197,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
                   <Avatar
                     size={'sm'}
                     src={
-                      'https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
+                      'https://avatars.githubusercontent.com/u/112812835?v=4'
                     }
                   />
                   <VStack
