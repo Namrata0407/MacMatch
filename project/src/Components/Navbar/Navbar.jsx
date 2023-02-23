@@ -241,7 +241,7 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
   const [query, setQuery] = useState("");
   const [suggation, setSuggation] = useState([]);
-  // const products = useSelector((store) => store.ProductReducer);
+  // const products = useSelector((store) => store.ProductReducer.totalProducts);
   const products =[
     {
       "id": 1,
