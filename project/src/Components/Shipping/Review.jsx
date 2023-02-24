@@ -8,32 +8,6 @@ import Grid from "@mui/material/Grid";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartProduct } from "../../Redux/cart/cart.action";
 
-// const products = [
-//   {
-//     name: "Product 1",
-//     desc: "A nice thing",
-//     price: "$9.99",
-//   },
-//   {
-//     name: "Product 2",
-//     desc: "Another thing",
-//     price: "$3.45",
-//   },
-//   {
-//     name: "Product 3",
-//     desc: "Something else",
-//     price: "$6.51",
-//   },
-//   {
-//     name: "Product 4",
-//     desc: "Best thing of all",
-//     price: "$14.11",
-//   },
-//   { name: "Shipping", desc: "", price: "Free" },
-// ];
-
-// const addresses = ["1 MUI Drive", "Reactville", "Anytown", "99999", "USA"];
-
 let details;
 // JSON.parse(localStorage.getItem("details")) || {};
 let cardDetails;
@@ -41,7 +15,7 @@ let cardDetails;
 let totalPrice = 0;
 
 export default function Review() {
-  const products = useSelector((store) => store.cart);
+  const products = useSelector((store) => store.cartReducer.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -90,8 +64,8 @@ export default function Review() {
             {details?.fname} {details?.lname}
           </Typography>
           <Typography gutterBottom>
-            {details?.address},{details?.city},{details?.state}, {details?.code},{" "}
-            {details?.country}
+            {details?.address},{details?.city},{details?.state}, {details?.code}
+            , {details?.country}
           </Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>

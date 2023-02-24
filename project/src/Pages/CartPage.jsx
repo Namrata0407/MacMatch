@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const CartPage = () => {
   const [subTotal, setSubTotal] = useState(0);
   const dispatch = useDispatch();
-  const data = useSelector((store) => store.cart);
+  const data = useSelector((store) => store.cartReducer.cart);
 
   // const handleTotalPrice = (priceValue) => {
   //   setSubTotal(priceValue);
@@ -21,7 +21,7 @@ const CartPage = () => {
   }, []);
 
   useEffect(() => {
-    let subTot = data.reduce((acc, item) => acc + item.price, 1);
+    let subTot = data?.reduce((acc, item) => acc + item.price, 1);
     setSubTotal(subTot);
     localStorage.setItem("totalPrice", subTot);
   }, [data]);
