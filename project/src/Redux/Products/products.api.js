@@ -42,7 +42,7 @@ export const DeleteDataApi = async (id) => {
 
 export const PostDataApi=async(data)=>{
     try{
-        let res=await axios.post('https://thankful-loafers-hare.cyclic.app',{...data})
+        let res=await axios.post('https://thankful-loafers-hare.cyclic.app/apple',{...data})
         let data=res.data;
         return data;
     }
@@ -52,3 +52,16 @@ export const PostDataApi=async(data)=>{
 }
 
 
+export const SingleProductPageApi=async(id)=>{
+try{
+let res=await axios.get(`https://thankful-loafers-hare.cyclic.app/apple/${id}`);
+console.log("hi",id,res.data)
+return res.data;
+
+}
+catch(er)
+{
+  console.log(er)
+}
+
+}

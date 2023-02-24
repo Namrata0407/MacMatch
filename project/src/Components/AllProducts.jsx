@@ -4,7 +4,7 @@ import FilterSortDrawer from "../Components/ProductDrawer/Drawer";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { getLimitedProduct, getProduct, getTotalProduct, handlePage } from "../Redux/Products/products.actions";
-import { ProdCard, ProdCard2 } from "./ProductCard/ProdCard";
+import  {ProdCard } from "./ProductCard/ProdCard";
 import { INCREASE_PAGE } from "../Redux/Products/products.actions.types";
 import { Spinner } from '@chakra-ui/react'
 const AllProducts = () => {
@@ -83,13 +83,13 @@ if(products){
         alignItems="center"
         justifyContent={"space-evenly"}
         mt="25px"
-       
-       
+       gap="4px"
+      
       >
       
 
         {limitedProds?limitedProds.map((el) => (
-          <ProdCard2 key={el.id} el={el} />
+          <ProdCard key={el.id} el={el} />
         )):<Spinner
         thickness='4px'
         speed='0.65s'
@@ -114,7 +114,7 @@ if(products){
       {
         ChangePage(page-1)
       }}}>{"<"}</Button>{
-         products?Array(limit).fill("").map((el,index)=>(<Button border="1px solid black" key={index} colorScheme={page===index+1?"cyan":"gray"} onClick={()=>{
+         products?Array(limit).fill("").map((el,index)=>(<Button border="1px solid gray" _hover={"none"} key={index} bg={page===index+1?"gray":"white"} color={page===index+1?"white":"black"} onClick={()=>{
              if(page!==index+1)
              {
                 ChangePage(index+1)
