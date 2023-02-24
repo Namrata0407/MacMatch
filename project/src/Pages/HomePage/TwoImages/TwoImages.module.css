@@ -58,7 +58,7 @@
     font-weight: bold;
   }
   .img {
-    height: 300px;
+    height: auto;
     width: 100%;
     border: 5px solid white;
   }

@@ -10,7 +10,7 @@ const PrivateRouteAdmin = ({ children }) => {
   const { adminAuth } = useContext(AuthContext);
 
   if (!localStorage.getItem('adminAuth')) {
-    return <Navigate to="/loginadmin" />;
+    return <Navigate to="/signinadmin" />;
   }
 
   return children;

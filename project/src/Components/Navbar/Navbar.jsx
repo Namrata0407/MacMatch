@@ -26,7 +26,7 @@ import logo from "../Kausik_Assets/MAC_MATCH.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 
-import { FaSearchPlus } from "react-icons/fa";
+import { RxCross1 } from "react-icons/rx";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import styles from "./Navbar.module.css";
 
@@ -40,7 +40,7 @@ const NAV_ITEMS = [
       {
         label: "MacBook Air",
         subLabel: "Explore our wide range of collection",
-        href: "/",
+        href: "/store?filter=MacBook+Air",
       },
       {
         label: "MacBook Pro",
@@ -119,7 +119,7 @@ const NAV_ITEMS = [
   {
     label: "Support",
     href: "#",
-  }
+  },
 ];
 
 export default function Navbar() {
@@ -887,14 +887,21 @@ const DesktopNav = () => {
         color={"white"}
         className={styles.searchInput}
       />
-      <div
-        className={styles.searchLogo}
-        style={{ marginTop: "4px", color: "white" }}
-      >
-        <span style={{ cursor: "pointer" }}>
-          <FaSearchPlus cursor={"pointor"} />
-        </span>
-      </div>
+      {query.length > 0 && (
+        <div
+          className={styles.searchLogo}
+          style={{ marginTop: "4px", color: "white" }}
+        >
+          <span style={{ cursor: "pointer" }}>
+            <RxCross1
+              onClick={() => {
+                setQuery("");
+              }}
+              cursor={"pointor"}
+            />
+          </span>
+        </div>
+      )}
       {suggation.length > 0 && (
         <Box
           border={"1px solid"}

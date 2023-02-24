@@ -15,6 +15,8 @@ import AdminOrders from "../Admin/Pages/AdminOrders";
 import AdminProducts from "../Admin/Pages/AdminProducts";
 import AdminUsers from "../Admin/Pages/AdminUsers";
 import AdminPricing from "../Admin/Pages/AdminPricing";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import PrivateRouteAdmin from "./PrivateRoute/PrivateRouteAdmin";
 
 const AllRoutes = () => {
   return (
@@ -25,12 +27,26 @@ const AllRoutes = () => {
       <Route path="/signinadmin" element={<LoginAdmin />} />
       <Route path="/store" element={<ProductStore />} />
       <Route path="/product/:id" element={<SingleProductPage />} />
-      <Route path="/cart" element={<CartPage />} />
+      <Route
+        path="/cart"
+        element={
+          <PrivateRoute>
+            <CartPage />
+          </PrivateRoute>
+        }
+      />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/shipping" element={<Shipping />} />
 
       {/* admin */}
-      <Route path="/admin" element={<AdminDashboard />} />
+      <Route
+        path="/admin"
+        element={
+          <PrivateRouteAdmin>
+            <AdminDashboard />
+          </PrivateRouteAdmin>
+        }
+      />
       <Route path="/admin/orders" element={<AdminOrders />} />
       <Route path="/admin/products" element={<AdminProducts />} />
       <Route path="/admin/users" element={<AdminUsers />} />
