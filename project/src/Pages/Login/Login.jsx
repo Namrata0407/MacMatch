@@ -30,6 +30,7 @@ function Login() {
       status: 'error',
       duration: 9000,
       isClosable: true,
+      position:'top'
     })
   }
   const loginSuccess=()=>{
@@ -39,6 +40,7 @@ function Login() {
       status: 'success',
       duration: 9000,
       isClosable: true,
+      position:'top'
     })
   }
 // all toasts are here

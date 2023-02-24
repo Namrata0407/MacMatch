@@ -14,6 +14,7 @@ import {
   useBreakpointValue,
   useDisclosure,
   Input,
+  Tooltip,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -29,6 +30,9 @@ import { RxCross1 } from "react-icons/rx";
 import { FaUserCircle } from "react-icons/fa";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import styles from "./Navbar.module.css";
+import ButtonLogout from "./ButtonLogout";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartProduct } from "../../Redux/cart/cart.action";
 
 let authentication = localStorage.getItem("name");
 
@@ -45,86 +49,92 @@ const NAV_ITEMS = [
       {
         label: "MacBook Pro",
         subLabel: "Upgraded version of MAC Book",
-        href: "#",
+        href: "/store?filter=MacBook+Pro",
       },
       {
         label: "iPhone",
         subLabel: "It does before think",
-        href: "#",
+        href: "/store?filter=iPhone",
       },
       {
         label: "iPad",
         subLabel: "World's fastest tablet",
-        href: "#",
+        href: "/store?filter=iPad",
       },
       {
         label: "Watch",
         subLabel: "Make your life healthy",
-        href: "#",
+        href: "/store?filter=Watch",
       },
       {
         label: "Air Pods",
         subLabel: "Hear music with heart",
-        href: "#",
+        href: "/store?filter=Airpods",
       },
       {
         label: "TV & Home",
         subLabel: "Upgrade your home to the next level",
-        href: "#",
+        href: "/store?filter=Tv+%26+Home",
       },
       {
         label: "Entertainment",
         subLabel: "Just entertain between work",
-        href: "#",
+        href: "/store?filter=Entertainment",
       },
       {
         label: "Accessories",
         subLabel: "Go to next Era of life",
-        href: "#",
+        href: "/store?filter=Accessorires",
       },
     ],
   },
   {
     label: "Mac",
-    href: "/",
+    href: "/store?filter=MacBook+Air&filter=MacBook+Pro",
   },
   {
     label: "iPad",
-    href: "/",
+    href: "/store?filter=iPad",
   },
   {
     label: "iPhone",
-    href: "#",
+    href: "/store?filter=iPhone",
   },
   {
     label: "Watch",
-    href: "#",
+    href: "/store?filter=Watch",
   },
   {
     label: "AirPods",
-    href: "#",
+    href: "/store?filter=Airpods",
   },
   {
     label: "TV&Home",
-    href: "#",
+    href: "/store?filter=Tv+%26+Home",
   },
   {
     label: "Entertainment",
-    href: "#",
+    href: "/store?filter=Entertainment",
   },
   {
     label: "Accessories",
-    href: "#",
+    href: "/store?filter=Accessorires",
   },
   {
     label: "Support",
-    href: "#",
+    href: "/",
   },
 ];
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const { logoutUser } = useContext(AuthContext);
+  const dispatch = useDispatch();
+  const cart = useSelector((store) => store.cartReducer.cart);
+
+  useEffect(() => {
+    dispatch(getCartProduct());
+  }, []);
 
   return (
     <Box position={"sticky"} top={"0px"} zIndex={"1000"}>
@@ -183,21 +193,21 @@ export default function Navbar() {
                 color={"white"}
               >
                 <BsFillBagCheckFill />
-                <span style={{ marginLeft: "4px" }}>Cart : 0</span>
+                <span style={{ marginLeft: "4px" }}>
+                  Cart : {cart.length || 0}
+                </span>
               </Button>
+
               <Button className={styles.name}>
                 {localStorage.getItem("name")}
-                <span style={{ marginLeft:'5px' }}>
+                <span style={{ marginLeft: "5px" }}>
                   <FaUserCircle />{" "}
                 </span>
               </Button>
-              <Button
-                className={styles.name}
-                href={"/signin"}
-                onClick={logoutUser}
-              >
-                Logout
-              </Button>
+
+              <>
+                <ButtonLogout logout={logoutUser} />
+              </>
             </>
           ) : (
             <>
