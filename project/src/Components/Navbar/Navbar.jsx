@@ -40,7 +40,7 @@ const NAV_ITEMS = [
       {
         label: "MacBook Air",
         subLabel: "Explore our wide range of collection",
-        href: "/signup",
+        href: "/",
       },
       {
         label: "MacBook Pro",
@@ -901,7 +901,7 @@ const DesktopNav = () => {
           maxH={"200px"}
           position={"absolute"}
           w={"30%"}
-          left={"41%"}
+          left={"51.2%"}
           top={"43px"}
           zIndex={"10"}
           bg={"black"}

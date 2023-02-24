@@ -11,7 +11,7 @@ const Iphone14pro = () => {
         <button className={styles.button}>With superfast 5G*</button>
         <h1 className={styles.lmbm}>Learn more &gt; Buy &gt; </h1>
       </div>
-      <img src={iPhone} alt="iphone" width={'100%'} />
+      <img src={iPhone} alt="iphone" width={'100%'}/>
     </div>
   );
 };
