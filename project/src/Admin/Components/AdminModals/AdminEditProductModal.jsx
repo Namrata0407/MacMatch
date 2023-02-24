@@ -1,13 +1,22 @@
 
 
 import { Box, Button, Flex, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure } from "@chakra-ui/react"
-import React from "react";
+import React, { useState } from "react";
 import { GrEdit } from "react-icons/gr";
+import { useDispatch } from "react-redux";
+import { editAdminDataProduct } from "../../../Redux/AdminRedux/admin.action";
 
 
 
 
-export const AdminEditProductModal = () => {
+export const AdminEditProductModal = ({el}) => {
+    const [title, setTitle] = useState(el.title|| "");
+    const [image, setImage] = useState(el.img|| "");
+    const [description, setDiscription] = useState(el.description||"");
+    const [category, setCategory] = useState(el.category||"");
+    const [price, setPrice] = useState(el.price|| 0);
+const dispatch = useDispatch();
+
     const OverlayOne = () => (
         <ModalOverlay
             bg='blackAlpha.300'
@@ -27,17 +36,33 @@ export const AdminEditProductModal = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [overlay, setOverlay] = React.useState(<OverlayOne />)
 
+
+
+
+    const handleUpdate = ()=>{
+        const payload = {         
+      title,
+      category,
+      img:image,
+      price: +price,
+      rating:4.8,
+      cartStatus:false,
+      description
+        }
+      dispatch(editAdminDataProduct(el.id,payload))
+        onClose()
+    }
     return (
         <>
-            {/* <Button
+            {/* <GrEdit
          fontWeight={"extrabold"} bg={"#b2f5ea"} border={"1px solid black"}
           onClick={() => {
             setOverlay(<OverlayOne />)
             onOpen()
           }}
         >
-          Use Overlay one
-        </Button> */}
+          Edit Product
+        </GrEdit> */}
             <GrEdit
                 cursor={"pointer"}
                 fontWeight={"extrabold"} bg={"#b2f5ea"} border={"1px solid black"}
@@ -58,21 +83,21 @@ export const AdminEditProductModal = () => {
                         {/* <Text>Custom backdrop filters!</Text> */}
                         <Box>
                             <Text>Name of Product</Text>
-                            <Input placeholder="Product Name" />
+                            <Input value={title} onChange={(e)=>setTitle(e.target.value)} placeholder="Product Name" />
                             <Text>Image Url</Text>
-                            <Input placeholder="Image Url" />
+                            <Input value={image}  onChange={(e)=>setImage(e.target.value)} placeholder="Image Url" />
                             <Text>Product Description</Text>
-                            <Input placeholder="Product Description" />
+                            <Input value={description}  onChange={(e)=>setDiscription(e.target.value)} placeholder="Product Description" />
                             <Text>Category</Text>
-                            <Input placeholder="Category" />
+                            <Input value={category}  onChange={(e)=>setCategory(e.target.value)} placeholder="Category" />
                             <Text>Price</Text>
-                            <Input type={"number"} placeholder="price" />
+                            <Input value={price}  onChange={(e)=>setPrice(e.target.value)} type={"number"} placeholder="price" />
                         </Box>
                     </ModalBody>
                     <ModalFooter>
                         <Flex justifyContent={"space-between"} gap={"8px"}>
                             <Button bg={"red"} color="white" onClick={onClose}>Cance</Button>
-                            <Button bg={"#0072ba"} color="white" onClick={onClose}>Update</Button>
+                            <Button bg={"#0072ba"} color="white" onClick={handleUpdate}>Update</Button>
                         </Flex>
                     </ModalFooter>
                 </ModalContent>

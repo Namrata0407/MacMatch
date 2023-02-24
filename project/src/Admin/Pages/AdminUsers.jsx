@@ -1,5 +1,5 @@
-import { Box, Button, Divider, Flex, Heading, Table, TableContainer, Tbody, Td, Text, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
-import { useState } from "react";
+import { Box, Button, Divider, Flex, Heading, Image, Table, TableContainer, Tbody, Td, Text, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
+import { useEffect, useState } from "react";
 
 // AiFillEye
 
@@ -7,14 +7,23 @@ import { useState } from "react";
 // import { GrEdit } from "react-icons/gr";
 // import { MdOutlineDeleteOutline } from "react-icons/md";
 import {SlHandbag} from "react-icons/sl"
+import { useDispatch, useSelector } from "react-redux";
+import { getUsersAdminData } from "../../Redux/AdminRedux/admin.action";
 // import { AdminAddProductModal } from "../Components/AdminModals/AdminAddProductModal";
 import { AdminDeleteProductModal } from "../Components/AdminModals/AdminDeleteProductModal";
+import { AdminDeleteUserModal } from "../Components/AdminModals/AdminDeleteUserModal";
 import { AdminEditProductModal } from "../Components/AdminModals/AdminEditProductModal";
 import { AdminShowProductModal } from "../Components/AdminModals/AdminShowProductModal";
 
 const AdminUsers = () => {
-
+const dispatch = useDispatch();
     const [current, setCurrentPage] = useState(1);
+    const data = useSelector((res) => res.adminReducer.users);
+// console.log(data)
+
+useEffect(()=>{
+dispatch(getUsersAdminData)
+},[]);
 
     return (
         <>
@@ -39,59 +48,26 @@ const AdminUsers = () => {
                                 <Th color="white">User image</Th>
                                 <Th color="white">User name</Th>
                                 <Th color="white">Email</Th>
+                                <Th color="white">Address</Th>
                                 <Th color="white">Gender</Th>
                                 <Th color="white">Action</Th>
                             </Tr>
                         </Thead>
                         <Tbody>
-                            <Tr>
-                                <Td>inches</Td>
-                                <Td>image</Td>
-                                <Td>millimetres (mm)</Td>
-                                <Td>25.4</Td>
-                                <Td>₹347</Td>
-                                <Td> <Flex gap={"10px"} > <AdminShowProductModal /> <AdminEditProductModal /> <AdminDeleteProductModal/> </Flex> </Td>
-                            </Tr>
-                            <Tr>
-                                <Td>inches</Td>
-                                <Td>image</Td>
-                                <Td>millimetres (mm)</Td>
-                                <Td>25.4</Td>
-                                <Td>₹347</Td>
-                                <Td> <Flex gap={"10px"} > <AdminShowProductModal /> <AdminEditProductModal /> <AdminDeleteProductModal/> </Flex> </Td>
-                            </Tr>
-                            <Tr>
-                                <Td>inches</Td>
-                                <Td>image</Td>
-                                <Td>millimetres (mm)</Td>
-                                <Td>25.4</Td>
-                                <Td>₹347</Td>
-                                <Td> <Flex gap={"10px"} > <AdminShowProductModal /> <AdminEditProductModal /> <AdminDeleteProductModal/> </Flex> </Td>
-                            </Tr>
-                            <Tr>
-                            <Td>inches</Td>
-                            <Td>image</Td>
-                                <Td>millimetres (mm)</Td>
-                                <Td>25.4</Td>
-                                <Td>₹347</Td>
-                                <Td> <Flex gap={"10px"} > <AdminShowProductModal /> <AdminEditProductModal /> <AdminDeleteProductModal/> </Flex> </Td>
-                            </Tr>
-                            <Tr>
-                                <Td>inches</Td>
-                                <Td>image</Td>
-                                <Td>millimetres (mm)</Td>
-                                <Td>25.4</Td>
-                                <Td>₹347</Td>
-                                <Td> <Flex gap={"10px"} > <AdminShowProductModal /> <AdminEditProductModal /> <AdminDeleteProductModal/> </Flex> </Td>
-                            </Tr>
-                            <Tr>
-                                <Td>inches</Td>
-                                <Td>image</Td>
-                                <Td>millimetres (mm)</Td>
-                                <Td>25.4</Td>
-                                <Td>₹347</Td>
-                                <Td> <Flex gap={"10px"} > <AdminShowProductModal /> <AdminEditProductModal /> <AdminDeleteProductModal/> </Flex> </Td>
-                            </Tr>
+
+             {data?.map((el)=>(
+    
+    <Tr key={el.id}>
+    <Td>{el.id}</Td>
+    <Td><Image src={el.profile} alt={"avatar"}/></Td>
+    <Td>"id"</Td>
+    <Td>"name"</Td>
+    <Td>"address"</Td>
+    <Td>{el.gender}</Td>
+     <Td> <Flex gap={"10px"} > <AdminDeleteUserModal id= {el.id}/> </Flex> </Td> 
+</Tr>
+             ))}           
+                            
 
                             
                         </Tbody>
