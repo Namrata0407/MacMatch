@@ -1,4 +1,5 @@
 import { Icon } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { AddIcon, MinusIcon, SmallAddIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -36,15 +37,17 @@ const EmptyCart = () => {
           free next-day delivery on iPhone.
         </Text>
         <Flex justify={"start"} gap="30px">
-          <Button
-            bgColor={"#ebebeb"}
-            color="black"
-            borderRadius={"20px"}
-            py={"30px"}
-            px={"80px"}
-          >
-            Continue Shopping
-          </Button>
+          <Link to={'/store'}>
+            <Button
+              bgColor={"#ebebeb"}
+              color="black"
+              borderRadius={"20px"}
+              py={"30px"}
+              px={"80px"}
+            >
+              Continue Shopping
+            </Button>
+          </Link>
         </Flex>
       </Grid>
 

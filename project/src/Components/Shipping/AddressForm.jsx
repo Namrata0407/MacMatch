@@ -15,7 +15,7 @@ export default function AddressForm() {
   const [code, setCode] = useState("248001");
   const [country, setCountry] = useState("India");
 
-  const details = [fname, lname, address, city, state, code, country];
+  const details = {fname, lname, address, city, state, code, country};
 
   localStorage.setItem("details", JSON.stringify(details));
 

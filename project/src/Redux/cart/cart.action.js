@@ -1,4 +1,9 @@
-import { addToCartAPI, getCartProductAPI, removeCartItemAPI } from "./cart.api";
+import {
+  addToCartAPI,
+  getCartProductAPI,
+  removeCartItemAPI,
+  updateCartItemAPI,
+} from "./cart.api";
 import * as types from "./cart.types";
 
 const cartRequest = () => {
@@ -34,6 +39,13 @@ const deleteCart = (id) => {
   };
 };
 
+const updateCart = (id, val) => {
+  return {
+    type: types.UPDATE_CART_SUCCESS,
+    payload: { id, val },
+  };
+};
+
 export const getCartProduct = () => async (dispatch) => {
   try {
     dispatch(cartRequest());
@@ -60,6 +72,16 @@ export const removeCartItem = (id) => async (dispatch) => {
     const res = await removeCartItemAPI(id);
     dispatch(getCartProduct());
     // dispatch(deleteCart(id));
+  } catch (error) {
+    dispatch(cartError());
+  }
+};
+
+export const updateCartItem = (id, val) => async (dispatch) => {
+  try {
+    dispatch(cartRequest());
+    const res = await updateCartItemAPI(id, val);
+    dispatch(getCartProduct());
   } catch (error) {
     dispatch(cartError());
   }

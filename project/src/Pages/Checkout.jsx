@@ -29,6 +29,15 @@ import { AddIcon, MinusIcon, SmallAddIcon } from "@chakra-ui/icons";
 import { Icon } from "@chakra-ui/react";
 import AddressForm from "../Components/Shipping/AddressForm";
 
+const date = new Date(new Date().setDate(new Date().getDate() + 2));
+const options = {
+  weekday: "long",
+  day: "numeric",
+  month: "short",
+  timeZone: "Asia/Kolkata",
+};
+const formattedDate = date.toLocaleDateString("en-IN", options);
+
 const Checkout = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
@@ -99,22 +108,15 @@ const Checkout = () => {
             height={"100px"}
           >
             <Flex justify={"space-between"}>
-              <Text>
-                Delivers Tue{" "}
-                {new Date(
-                  new Date().setDate(new Date().getDate() + 2)
-                ).toLocaleDateString("en-IN", {
-                  day: "numeric",
-                  month: "short",
-                  timeZone: "Asia/Kolkata",
-                })}
+              <Text fontSize={"xl"} fontWeight="600">
+                Delivers {formattedDate}
               </Text>
               <Text>FREE</Text>
             </Flex>
             <Text textAlign={"start"}>Express Delivery</Text>
           </Grid>
-          <Grid gap={"10px"} w="50%" textAlign={"start"} p="20px">
-            <Text fontWeight={"500"}>Some things to keep in mind:</Text>
+          <Grid gap={"10px"} w="50%" textAlign={"start"} p="15px">
+            <Text fontSize={'xl'} fontWeight={"500"}>Some things to keep in mind:</Text>
             <Text>
               Standard deliveries are made between 8:00 a.m. and 6:00 p.m.,
               Monday-Saturday.
@@ -419,8 +421,6 @@ const Checkout = () => {
           </AccordionItem>
         </Accordion>
       </Box>
-
-      
 
       <Drawer
         isOpen={isOpen}
