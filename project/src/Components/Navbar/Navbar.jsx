@@ -25,8 +25,8 @@ import { Link } from "react-router-dom";
 import logo from "../Kausik_Assets/MAC_MATCH.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-
 import { RxCross1 } from "react-icons/rx";
+import { FaUserCircle } from "react-icons/fa";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import styles from "./Navbar.module.css";
 
@@ -185,13 +185,11 @@ export default function Navbar() {
                 <BsFillBagCheckFill />
                 <span style={{ marginLeft: "4px" }}>Cart : 0</span>
               </Button>
-              {/* <Button>{localStorage.getItem("name")}❤️</Button>
-              <Button onClick={logoutUser}>
-                <BsFillBagCheckFill />
-                <span style={{ marginLeft: "4px" }}>Cart : 0</span>
-              </Button> */}
               <Button className={styles.name}>
-                {localStorage.getItem("name")}❤️
+                {localStorage.getItem("name")}
+                <span style={{ marginLeft:'5px' }}>
+                  <FaUserCircle />{" "}
+                </span>
               </Button>
               <Button
                 className={styles.name}
