@@ -45,6 +45,15 @@ const reducer = (state = initialValue, action) => {
         cart: state.cart.filter((item) => item.id !== payload),
       };
 
+    case types.UPDATE_CART_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        cart: state.cart.map((item) => {
+          return item.id === payload.id ? (item.id = payload.val) : item;
+        }),
+      };
+
     default:
       return state;
   }

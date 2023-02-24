@@ -9,15 +9,15 @@ import Checkbox from "@mui/material/Checkbox";
 export default function PaymentForm() {
   const [name, setName] = useState("Somesh Rawat");
   const [card, setCard] = useState("");
+  const [date, setDate] = useState("");
 
   const cardDetails = {
     name,
     card,
+    date,
   };
 
-  useEffect(() => {
-    localStorage.setItem("cardDetails", JSON.stringify(cardDetails));
-  }, []);
+  localStorage.setItem("cardDetails", JSON.stringify(cardDetails));
 
   return (
     <React.Fragment>
@@ -57,6 +57,7 @@ export default function PaymentForm() {
             fullWidth
             autoComplete="cc-exp"
             variant="standard"
+            onChange={(e) => setDate(e.target.value)}
           />
         </Grid>
         <Grid item xs={12} md={6}>

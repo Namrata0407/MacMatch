@@ -1,38 +1,29 @@
 import { Box, Button, Flex, Grid, Image, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeCartItem } from "../Redux/cart/cart.action";
+import { removeCartItem, updateCartItem } from "../Redux/cart/cart.action";
 
-const Cart = ({
-  id,
-  title,
-  category,
-  img,
-  price,
-  description,
-  handleTotalPrice,
-}) => {
-  const [quantity, setQuantity] = useState(1);
+const Cart = ({ id, title, category, img, price, description, quantity }) => {
+  // const [quantity, setQuantity] = useState(1);
   const [qPrice, setQPrice] = useState(0);
   const [total, setTotal] = useState(0);
   const dispatch = useDispatch();
 
-  const handleQuantityChange = (value) => {
-    setQuantity(value);
-  };
+  // const handleQuantityChange = (value) => {
+  //   setQuantity(value);
+  // };
 
-  const handleTotal = () => {
-    handleTotalPrice();
+  const handleQuantityChange = (value, id) => {
+    dispatch(updateCartItem(id, value));
   };
 
   const handleRemoveButton = async (id) => {
     dispatch(removeCartItem(id));
   };
 
-  useEffect(() => {
-    setQPrice((quantity * price).toFixed(2));
-    handleTotal();
-  }, [quantity]);
+  // useEffect(() => {
+  //   setQPrice((quantity * price).toFixed(2));
+  // }, [quantity]);
 
   return (
     <Box w="80%" m={"auto"}>
@@ -79,8 +70,8 @@ const Cart = ({
                   Quantity:
                 </Text>
                 <select
-                  //   value={quantity}
-                  onChange={(e) => handleQuantityChange(e.target.value)}
+                  value={quantity}
+                  onChange={(e) => handleQuantityChange(e.target.value, id)}
                 >
                   {[...Array(10)].map((_, i) => (
                     <option key={i} value={i + 1}>
@@ -89,11 +80,13 @@ const Cart = ({
                   ))}
                 </select>
               </Flex>
-              <Text>₹ {qPrice}</Text>
+              <Text>₹ {price * quantity}</Text>
             </Flex>
             <Box>
-              <Text>Get up to ₹20809.00 savings with eligible card(s)^</Text>
-              <Text textAlign={"end"}>₹39983.00/mo.^</Text>
+              <Text>Get up to 10% savings with eligible card(s)^</Text>
+              <Text textAlign={"end"}>
+                ₹{((price * quantity) / 6).toFixed(2)}/mo.^
+              </Text>
             </Box>
             <Button
               size="sm"

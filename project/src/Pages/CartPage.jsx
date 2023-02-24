@@ -10,23 +10,27 @@ import { Link } from "react-router-dom";
 const CartPage = () => {
   const [subTotal, setSubTotal] = useState(0);
   const dispatch = useDispatch();
-  const data = useSelector((store) => store.cartReducer.cart);
+  const data = useSelector((store) => store.cart);
 
-  const handleTotalPrice = (priceValue) => {
-    setSubTotal(priceValue);
-  };
+  // const handleTotalPrice = (priceValue) => {
+  //   setSubTotal(priceValue);
+  // };
 
   useEffect(() => {
     dispatch(getCartProduct());
   }, []);
 
+  useEffect(() => {
+    let subTot = data.reduce((acc, item) => acc + item.price, 1);
+    setSubTotal(subTot);
+    localStorage.setItem("totalPrice", subTot);
+  }, [data]);
+
   return (
     <>
       {data?.length > 0 ? (
         data?.map((item) => {
-          return (
-            <Cart key={item.id} {...item} handleTotalPrice={handleTotalPrice} />
-          );
+          return <Cart key={item.id} {...item} />;
         })
       ) : (
         <EmptyCart />
@@ -36,7 +40,7 @@ const CartPage = () => {
         <Box boxShadow="lg" p={4} mt={4} w={"50%"} margin="auto">
           <Flex justifyContent="space-between" mb={4}>
             <Text fontSize="2xl">Subtotal:</Text>
-            <Text fontSize="2xl">₹ {subTotal}</Text>
+            <Text fontSize="2xl">₹ {subTotal.toFixed(2)}</Text>
           </Flex>
           <Flex justifyContent="space-between" mb={4}>
             <Text fontSize="lg">Shipping</Text>
@@ -44,7 +48,7 @@ const CartPage = () => {
           </Flex>
           <Flex justifyContent="space-between" mb={4}>
             <Text fontSize="lg">Monthly Payment:</Text>
-            <Text fontSize="lg">₹ 1234455</Text>
+            <Text fontSize="lg">₹ {(subTotal / 6).toFixed(2)}</Text>
           </Flex>
           <Link to={"/checkout"}>
             <Button size="lg" colorScheme="blue">
