@@ -193,9 +193,14 @@ export default function Navbar() {
                 color={"white"}
               >
                 <BsFillBagCheckFill />
-                <span style={{ marginLeft: "4px" }}>
-                  Cart : {cart.length || 0}
-                </span>
+                <Tooltip
+                  label={`You have ${cart.length || 0} items in the cart`}
+                  fontSize="md"
+                >
+                  <span style={{ marginLeft: "4px" }}>
+                    Cart : {cart.length || 0}
+                  </span>
+                </Tooltip>
               </Button>
 
               <Button className={styles.name}>
@@ -204,7 +209,6 @@ export default function Navbar() {
                   <FaUserCircle />{" "}
                 </span>
               </Button>
-
               <>
                 <ButtonLogout logout={logoutUser} />
               </>

@@ -2,7 +2,7 @@ import AllRoutes from "./Components/AllRoutes";
 import Navbar2 from "./Components/Navbar/Navbar2";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
-import AdiminRoutes from "./Admin/Components/AdminRoutes";
+import BackToTop from "./Components/BackToTop/BackToTop";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Navbar2 />
 
       <AllRoutes />
-      {/* <AdiminRoutes /> */}
+      <BackToTop/>
       <Footer />
     </div>
   );
