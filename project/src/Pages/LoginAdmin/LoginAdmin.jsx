@@ -23,7 +23,9 @@ function LoginAdmin() {
     setload(true);
     // console.log(load);
     try {
-      let res = await fetch(`https://thankful-loafers-hare.cyclic.app/admin`);
+      let res = await fetch(
+        `https://thankful-loafers-hare.cyclic.app/adminMacMatch `
+      );
       let data = await res.json();
       // console.log(data);
       let Auth = false;
@@ -39,7 +41,7 @@ function LoginAdmin() {
         alert("Please enter right email or password!");
       } else {
         alert("Login Successfull!");
-        navigate("/admin/dashboard");
+        navigate("/admin");
       }
 
       console.log(Auth);

@@ -34,19 +34,75 @@
   color: rgb(86, 86, 255);
 }
 
-@media screen and (max-width: 475px) {
-  /* .allHeading {
+@media screen and (min-width: 10px) {
+  .allHeading {
     margin-top: 10px;
-    left: 28%;
-    width: 45%;
-    border: 1px solid cyan;
+    left: 31%;
+    width: 40%;
+  }
+  .pro {
+    font-size: 12px;
+  }
+  .beyond {
+    font-size: 10px;
   }
   .button {
-    padding: 3px;
-    border-radius: 100px;
-    margin-top: 5px;
-    color: rgb(163, 160, 160);
-    margin-left: 32%;
+    display: none;
+  }
+  .lmbm {
     font-size: 8px;
-  } */
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .allHeading {
+    margin-top: 10px;
+    left: 31%;
+    width: 40%;
+  }
+  .pro {
+    font-size: 24px;
+  }
+  .beyond {
+    font-size: 16px;
+  }
+  .button {
+    display: none;
+  }
+  .lmbm {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .allHeading {
+    margin-top: 30px;
+    left: 37%;
+    width: 25%;
+  }
+  .pro {
+    font-size: 50px;
+  }
+  .beyond {
+    font-size: 30px;
+  }
+  .button {
+    border: 1px solid rgb(163, 160, 160);
+    padding: 5px;
+    border-radius: 100px;
+    margin-top: 10px;
+    color: rgb(163, 160, 160);
+    margin-left: 33%;
+    font-size: 14px;
+  }
+  .lmbm {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(86, 86, 255);
+  }
+  .button{
+    display: flex;
+  }
 }

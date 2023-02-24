@@ -1,4 +1,3 @@
-import { Heading } from "@chakra-ui/react";
 import React from "react";
 import iPhone from "../Kausik_Assets/iPhone14.jpg";
 import styles from "./Iphone14.module.css";

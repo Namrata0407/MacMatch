@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { AuthContext } from "../Context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
+
 
 
 // 1. This particular component shall be a wrapper which based on authentication status either redirects user back to login page or renders the same page;
@@ -10,7 +11,7 @@ const PrivateRoute = ({ children }) => {
   const { isAuth } = useContext(AuthContext);
 
   if (!localStorage.getItem('name')) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/signin" />;
   }
 
   return children;

@@ -16,10 +16,100 @@
   border-radius: 100px;
   margin-top: 10px;
   color: black;
-  margin-left: 33%;
+  margin-left: 39%;
   font-size: 16px;
   background: white;
 }
-.video {
-  height: 860px;
+.feel {
+  text-align: center;
+  font-size: 60px;
+  font-weight: 600;
+}
+.fiveG {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+.vlog {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 550;
+  color: rgb(86, 86, 255);
+}
+/* for mobile */
+@media screen and (min-width: 10px) {
+  .allHeading {
+    margin-top: 30%;
+    left: 31%;
+    width: 41%;
+  }
+  .feel {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .fiveG {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 400;
+    margin-top: 10px;
+  }
+  .button {
+    display: none;
+  }
+  .vlog {
+    font-size: 8px;
+    font-weight: bold;
+  }
+}
+
+/* for tab */
+@media screen and (min-width: 500px) {
+.feel{
+  font-size: 24px;
+}
+.beyond {
+    font-size: 16px;
+  }
+  .button {
+    display: none;
+  }
+  .vlog {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+.feel {
+  text-align: center;
+  font-size: 60px;
+  font-weight: 600;
+}
+.button {
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 100px;
+  margin-top: 10px;
+  color: black;
+  margin-left: 39%;
+  font-size: 16px;
+  background: white;
+  display: flex;
+}
+.vlog {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 550;
+  color: rgb(86, 86, 255);
+}
+.fiveG {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 10px;
+}
 }

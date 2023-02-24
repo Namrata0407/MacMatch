@@ -13,7 +13,6 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-
   Input,
 } from "@chakra-ui/react";
 import {
@@ -26,11 +25,10 @@ import { Link } from "react-router-dom";
 import logo from "../Kausik_Assets/MAC_MATCH.png";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-
-import { FaSearchPlus } from "react-icons/fa";
+import { RxCross1 } from "react-icons/rx";
+import { FaUserCircle } from "react-icons/fa";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import styles from "./Navbar.module.css";
-
 
 let authentication = localStorage.getItem("name");
 
@@ -42,7 +40,7 @@ const NAV_ITEMS = [
       {
         label: "MacBook Air",
         subLabel: "Explore our wide range of collection",
-        href: "/signup",
+        href: "/store?filter=MacBook+Air",
       },
       {
         label: "MacBook Pro",
@@ -122,14 +120,6 @@ const NAV_ITEMS = [
     label: "Support",
     href: "#",
   },
-  {
-    label: <Input padding={'5px'} fontSize={'16px'} height={'25px'}/>,
-    href: "#",
-  },
-  {
-    label: <div style={{marginTop:'4px'}}><FaSearchPlus /></div>,
-    href: "#",
-  },
 ];
 
 export default function Navbar() {
@@ -167,11 +157,7 @@ export default function Navbar() {
             color={useColorModeValue("gray.800", "white")}
           >
             <Link to={"/"}>
-              <img
-                src={logo}
-                alt="logo"
-                className={styles.logo}
-              />
+              <img src={logo} alt="logo" className={styles.logo} />
             </Link>
           </Text>
 
@@ -188,8 +174,7 @@ export default function Navbar() {
         >
           {authentication ? (
             <>
-
-            <Button
+              <Button
                 as={"a"}
                 fontSize={"sm"}
                 fontWeight={400}
@@ -197,18 +182,20 @@ export default function Navbar() {
                 href={"/cart"}
                 color={"white"}
               >
-               <BsFillBagCheckFill/><span style={{marginLeft:'4px'}}>Cart : 0</span> 
-              </Button>
-              <Button>{localStorage.getItem("name")}❤️</Button>
-              <Button
-                onClick={logoutUser}
-
-              >
                 <BsFillBagCheckFill />
                 <span style={{ marginLeft: "4px" }}>Cart : 0</span>
               </Button>
-              <Button className={styles.name}>{localStorage.getItem("name")}❤️</Button>
-              <Button className={styles.name} href={"/signin"} onClick={logoutUser}>
+              <Button className={styles.name}>
+                {localStorage.getItem("name")}
+                <span style={{ marginLeft:'5px' }}>
+                  <FaUserCircle />{" "}
+                </span>
+              </Button>
+              <Button
+                className={styles.name}
+                href={"/signin"}
+                onClick={logoutUser}
+              >
                 Logout
               </Button>
             </>
@@ -240,7 +227,6 @@ export default function Navbar() {
               </Button>
             </>
           )}
-          {/*  */}
         </Stack>
       </Flex>
 
@@ -861,7 +847,12 @@ const DesktopNav = () => {
                   color: linkHoverColor,
                 }}
               >
-                <p className={styles.label} style={{ color: "rgb(196, 194, 194)" }}>{navItem.label}</p>
+                <p
+                  className={styles.label}
+                  style={{ color: "rgb(196, 194, 194)" }}
+                >
+                  {navItem.label}
+                </p>
               </Link>
             </PopoverTrigger>
 
@@ -894,21 +885,28 @@ const DesktopNav = () => {
         color={"white"}
         className={styles.searchInput}
       />
-      <div className={styles.searchLogo} style={{ marginTop: "4px", color: "white" }}>
-        <span style={{ cursor: "pointer" }}>
-          <FaSearchPlus
-            cursor={"pointor"}
-            onClick={() => console.log("humTum")}
-          />
-        </span>
-      </div>
+      {query.length > 0 && (
+        <div
+          className={styles.searchLogo}
+          style={{ marginTop: "4px", color: "white" }}
+        >
+          <span style={{ cursor: "pointer" }}>
+            <RxCross1
+              onClick={() => {
+                setQuery("");
+              }}
+              cursor={"pointor"}
+            />
+          </span>
+        </div>
+      )}
       {suggation.length > 0 && (
         <Box
           border={"1px solid"}
           maxH={"200px"}
           position={"absolute"}
           w={"30%"}
-          left={"41%"}
+          left={"51.2%"}
           top={"43px"}
           zIndex={"10"}
           bg={"black"}
