@@ -43,7 +43,7 @@ import { addToCartFn } from '../Redux/cart/cart.action';
 
   
   }
-
+  let auth=localStorage.getItem('name');
 
 
   useEffect(()=>{
@@ -152,7 +152,8 @@ import { addToCartFn } from '../Redux/cart/cart.action';
                   <Text as={'span'} fontWeight={'bold'}>
                    Rating:
                   </Text>{' '}
-                 {data.rating}
+                 {data.rating<3?<span>★★</span>:<span>★★★★✩</span>}
+                 ({data.rating})
                 </ListItem>
               
                 <ListItem>
@@ -166,7 +167,7 @@ import { addToCartFn } from '../Redux/cart/cart.action';
                   <Text as={'span'} fontWeight={'bold'}>
                     Quantity:
                   </Text>{' '}
-                <Button border="1px solid lightgrey" onClick={()=>{setQty(prev=>prev+1)}} fontWeight={"bold"}>+</Button> {data.quantity}{' '}<Button border="1px solid lightgrey" onClick={()=>{setQty(prev=>prev-1)}} fontWeight={"bold"} isDisabled={data.quantity===1}>-</Button>
+              {data.quantity}
                 </ListItem>
               </List>
             </Box>
@@ -188,11 +189,28 @@ import { addToCartFn } from '../Redux/cart/cart.action';
             
             
             onClick={() => {
-              if(!data.cartStatus){
-              let obj = { ...data, cartStatus: !data.cartStatus,quantity:qty };
-              dispatch(updateProduct(obj));
-              obj.quantity = 1;
-              dispatch(addToCartFn(obj));
+              if(auth){
+                let obj = { ...data, cartStatus: !data.cartStatus };
+                dispatch(updateProduct(obj));
+                obj.quantity = 1;
+                dispatch(addToCartFn(obj));
+                toast({
+                  title: (
+                    <Text
+                      display="flex"
+                      justifyContent={"center"}
+                      gap="5px"
+                      alignItems={"center"}
+                    >
+                      Item added to your Cart
+                    </Text>
+                  ),
+                  status: "success",
+                  isClosable: true,
+                  position: "top",
+                });
+              }
+            else{
               toast({
                 title: (
                   <Text
@@ -201,35 +219,15 @@ import { addToCartFn } from '../Redux/cart/cart.action';
                     gap="5px"
                     alignItems={"center"}
                   >
-                    Item added to your Cart
+                    Please do Login to add item
                   </Text>
                 ),
                 status: "success",
                 isClosable: true,
                 position: "top",
               });
+
             }
-          else{
-
-            toast({
-              title: (
-                <Text
-                  display="flex"
-                  justifyContent={"center"}
-                  gap="5px"
-                  alignItems={"center"}
-                >
-                  Item already added into your Cart
-                </Text>
-              ),
-              status: "success",
-              isClosable: true,
-              position: "top",
-            });
-
-
-
-          }
           
           
           
