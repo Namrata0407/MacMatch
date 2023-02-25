@@ -1,4 +1,4 @@
-import styles from "./DisOurFav.module.css";
+import styles from "./Carousels2.module.css";
 import { Link } from "react-router-dom";
 
 export function MyCard({ src, cap }) {

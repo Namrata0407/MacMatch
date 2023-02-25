@@ -196,6 +196,8 @@ export default function Navbar() {
                 <Tooltip
                   label={`You have ${cart.length || 0} items in the cart`}
                   fontSize="md"
+                  background='lightgrey'
+                  color={'black'}
                 >
                   <span style={{ marginLeft: "4px" }}>
                     Cart : {cart.length || 0}
