@@ -19,13 +19,19 @@ import {
 } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "../../Redux/Products/products.actions";
 import { addToCartFn, removeCartItem } from "../../Redux/cart/cart.action";
+import {AiOutlineShoppingCart} from "react-icons/ai";
+import { BsFillCartCheckFill } from "react-icons/bs";
+
 export const ProdCard = ({ el }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const cart=useSelector((store)=>store.cartReducer.cart)
   const toast = useToast();
+  let auth=localStorage.getItem('name');
+  
   return (
     <Center py={6}>
       <Box
@@ -113,9 +119,9 @@ export const ProdCard = ({ el }) => {
             onClick={() => {}}
           >
             {el.cartStatus ? (
-              <BsHeartFill
-                fill="red"
-                fontSize={"24px"}
+              <BsFillCartCheckFill
+               
+                fontSize={"30px"}
                 onClick={() => {
                   let obj = { ...el, cartStatus: !el.cartStatus };
                   dispatch(updateProduct(obj));
@@ -138,9 +144,10 @@ export const ProdCard = ({ el }) => {
                 }}
               />
             ) : (
-              <BsHeart
-                fontSize={"24px"}
+              <AiOutlineShoppingCart
+                fontSize={"30px"}
                 onClick={() => {
+                  if(auth){
                   let obj = { ...el, cartStatus: !el.cartStatus };
                   dispatch(updateProduct(obj));
                   obj.quantity = 1;
@@ -160,7 +167,28 @@ export const ProdCard = ({ el }) => {
                     isClosable: true,
                     position: "top",
                   });
-                }}
+                }
+              else{
+                toast({
+                  title: (
+                    <Text
+                      display="flex"
+                      justifyContent={"center"}
+                      gap="5px"
+                      alignItems={"center"}
+                    >
+                      Please do Login to add item
+                    </Text>
+                  ),
+                  status: "success",
+                  isClosable: true,
+                  position: "top",
+                });
+
+              }
+              
+              
+              }}
               />
             )}
           </Flex>

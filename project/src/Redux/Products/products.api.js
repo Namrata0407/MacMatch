@@ -3,7 +3,7 @@ import axios from "axios";
 export const getDataApi = async (getProductsParam="",pageNo,limitval=6) => {
   try {
     let res = await axios.get(
-      `https://thankful-loafers-hare.cyclic.app/apple?_page=${pageNo}&_limit=${limitval}`,
+      `https://mockserver-rny6.onrender.com/apple?_page=${pageNo}&_limit=${limitval}`,
       getProductsParam
     );
   // console.log(res.headers["x-total-count"])
@@ -16,7 +16,7 @@ export const getDataApi = async (getProductsParam="",pageNo,limitval=6) => {
 export const UpdataDataApi =async ({...data}) => {
   try {
     let res = await axios.patch(
-      `https://thankful-loafers-hare.cyclic.app/apple/${data.id}`,
+      `https://mockserver-rny6.onrender.com/apple/${data.id}`,
       { ...data }
     );
     let resData=res.data;
@@ -31,7 +31,7 @@ export const UpdataDataApi =async ({...data}) => {
 export const DeleteDataApi = async (id) => {
   try {
     let res = await axios.delete(
-      `https://thankful-loafers-hare.cyclic.app/apple/${id}`
+      `https://mockserver-rny6.onrender.com/apple/${id}`
     );
     let data=res.data;
     return data;
@@ -42,7 +42,7 @@ export const DeleteDataApi = async (id) => {
 
 export const PostDataApi=async(data)=>{
     try{
-        let res=await axios.post('https://thankful-loafers-hare.cyclic.app/apple',{...data})
+        let res=await axios.post('https://mockserver-rny6.onrender.com/apple',{...data})
         let data=res.data;
         return data;
     }
@@ -54,7 +54,7 @@ export const PostDataApi=async(data)=>{
 
 export const SingleProductPageApi=async(id)=>{
 try{
-let res=await axios.get(`https://thankful-loafers-hare.cyclic.app/apple/${id}`);
+let res=await axios.get(`https://mockserver-rny6.onrender.com/apple/${id}`);
 console.log("hi",id,res.data)
 return res.data;
 

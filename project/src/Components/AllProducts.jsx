@@ -7,6 +7,7 @@ import { getLimitedProduct, getProduct, getTotalProduct, handlePage } from "../R
 import  {ProdCard } from "./ProductCard/ProdCard";
 import { INCREASE_PAGE } from "../Redux/Products/products.actions.types";
 import { Spinner } from '@chakra-ui/react'
+
 const AllProducts = () => {
   const dispatch = useDispatch();
   
