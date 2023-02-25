@@ -21,7 +21,7 @@ export default function ButtonLogout({logout}) {
 
   const logOutSuccess =()=>{
     logout()
-    navigate("/signin");
+    navigate("/signin")
   }
 
   return (
