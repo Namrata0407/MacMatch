@@ -117,16 +117,8 @@ export default function Checkout() {
               </Typography>
 
               {setTimeout(() => {
-                dispatch(addToOrderItem(cartData)).then(()=>{
-                  dispatch(emptyCart());
-                  let i=0;
-                  while(i<cartData.length){
-                    dispatch(emptyCart(cartData[i].id)).then((res)=>{
-                      i++
-                    });
-                  }
-                });
-                // dispatch(emptyCart());
+                dispatch(addToOrderItem(cartData))
+                dispatch(emptyCart());
                 navigate("/");
               }, 3000)}
             </React.Fragment>

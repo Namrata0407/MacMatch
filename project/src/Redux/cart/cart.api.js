@@ -52,10 +52,10 @@ export const addToOrderItemAPI = async (payload) => {
   }
 };
 
-export const emptyCartAPI = async (id) => {
+export const emptyCartAPI = async () => {
   try {
-   let res =  await axios.delete(`https://mockserver-rny6.onrender.com/carts/${id}`);
-   return res.data
+    let res = await axios.put(`https://mockserver-rny6.onrender.com/carts`, {});
+    return res.data;
   } catch (error) {
     console.log(error);
   }

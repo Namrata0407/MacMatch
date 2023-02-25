@@ -110,10 +110,10 @@ export const addToOrderItem = (payload) => async (dispatch) => {
   }
 };
 
-export const emptyCart = (id) => async (dispatch) => {
+export const emptyCart = () => async (dispatch) => {
   try {
     dispatch(cartRequest());
-    const res = await emptyCartAPI(id);
+    const res = await emptyCartAPI();
     return res;
   } catch (error) {
     dispatch(cartError());
