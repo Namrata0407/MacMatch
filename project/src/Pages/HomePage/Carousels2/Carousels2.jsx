@@ -7,7 +7,7 @@ export function MyCard({ src, cap }) {
       style={{
         minWidth: "230px",
         maxWidth: "300px",
-        height: "auto",
+        height: "311px",
         marginRight: "25px",
         color: "white",
         position: "relative",
@@ -19,7 +19,7 @@ export function MyCard({ src, cap }) {
       <img
         src={src}
         alt="i"
-        style={{ borderRadius: "10px", height: "310px", margin: "auto" }}
+        style={{ borderRadius: "10px", height: "210px", margin: "auto" }}
       />
       <div className={styles.myCardCaption}>
         <Link to="/">{cap}</Link>
