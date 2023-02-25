@@ -1,11 +1,6 @@
 import { Box, Button, Divider, Flex, Heading, Image, Table, TableContainer, Tbody, Td, Text, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
 
-// AiFillEye
-
-// import { FaRegEye } from "react-icons/fa";
-// import { GrEdit } from "react-icons/gr";
-// import { MdOutlineDeleteOutline } from "react-icons/md";
 import {SlHandbag} from "react-icons/sl"
 import { useDispatch, useSelector } from "react-redux";
 import { getUsersAdminData } from "../../Redux/AdminRedux/admin.action";
@@ -47,8 +42,8 @@ dispatch(getUsersAdminData)
                                 <Th color="white">User Id</Th>
                                 <Th color="white">User image</Th>
                                 <Th color="white">User name</Th>
-                                <Th color="white">Email</Th>
-                                <Th color="white">Address</Th>
+                                <Th color="white">user Email</Th>
+                                <Th color="white">Mobile No</Th>
                                 <Th color="white">Gender</Th>
                                 <Th color="white">Action</Th>
                             </Tr>
@@ -59,10 +54,10 @@ dispatch(getUsersAdminData)
     
     <Tr key={el.id}>
     <Td>{el.id}</Td>
-    <Td><Image src={el.profile} alt={"avatar"}/></Td>
-    <Td>"id"</Td>
-    <Td>"name"</Td>
-    <Td>"address"</Td>
+    <Td><Image width={"100px"} height={"100px"} borderRadius={"50%"} src={el.profile} alt={"avatar"}/></Td>
+    <Td>{el.name}</Td>
+    <Td>{el.email}</Td>
+    <Td>{el.mobile}</Td>
     <Td>{el.gender}</Td>
      <Td> <Flex gap={"10px"} > <AdminDeleteUserModal id= {el.id}/> </Flex> </Td> 
 </Tr>

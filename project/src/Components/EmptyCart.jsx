@@ -25,14 +25,14 @@ const EmptyCart = () => {
         gap={"30px"}
         p={"30px"}
         // border="1px solid white"
-        width={"70%"}
+        width={["100%","70%","70%"]}
         m="auto"
         textAlign={"start"}
       >
-        <Text as={"h1"} fontSize="4xl" fontWeight={"600"}>
+        <Text as={"h1"} fontSize={["xl","3xl","4xl"]} fontWeight={"600"}>
           Your bag is empty.
         </Text>
-        <Text>
+        <Text fontSize={["sm","lg","lg"]}>
           Buy online and get free two-day delivery on all in-stock items and
           free next-day delivery on iPhone.
         </Text>
@@ -42,8 +42,8 @@ const EmptyCart = () => {
               bgColor={"#ebebeb"}
               color="black"
               borderRadius={"20px"}
-              py={"30px"}
-              px={"80px"}
+              py={["15px","30px","30px"]}
+              px={["60px","80px","80px"]}
             >
               Continue Shopping
             </Button>
@@ -52,12 +52,12 @@ const EmptyCart = () => {
       </Grid>
 
       <Box borderTop="1px solid gray" borderBottom="1px solid gray">
-        <Text p="20px">
+        <Text p="20px" textAlign={'center'}>
           Need some help? Chat now (Opens in a new window)or call 1-800-APPLE.
         </Text>
       </Box>
 
-      <Box position="relative" w="80%" p={"30px"} margin={"auto"}>
+      <Box position="relative" w={["100%","100%","80%"]} p={"30px"} margin={"auto"}>
         <Image
           src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/apple-new-arrivals-checkout-201804?wid=980&hei=400&fmt=jpeg&qlt=95&.v=1523551959954"
           alt="My Image"
@@ -73,15 +73,15 @@ const EmptyCart = () => {
           alignItems="center"
           justifyContent="start"
         >
-          <Box color="black" ml={"15%"} p="30px">
-            <Text fontSize="3xl" fontWeight={500} textAlign="center">
+          <Box color="black" ml={["2%","4%","15%"]} p={"30px"}>
+            <Text fontSize={["xsm","14px","3xl"]} fontWeight={500} textAlign={["start","start","start"]}>
               New Arrivals
             </Text>
 
-            <Text fontWeight={400}> Check out the latest accessories.</Text>
+            <Text fontSize={["10px","sm","lg"]} fontWeight={[100,300,400]}> Check out the latest accessories.</Text>
 
             <Text color="blue" fontWeight={400}>
-              Shop
+              <Link to={'/store'}>Shop</Link> 
             </Text>
           </Box>
         </Box>

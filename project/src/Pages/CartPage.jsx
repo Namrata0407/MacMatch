@@ -1,5 +1,4 @@
 import { Box, Button, Card, Flex, Text } from "@chakra-ui/react";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cart from "../Components/cart";
@@ -12,34 +11,53 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const data = useSelector((store) => store.cartReducer.cart);
 
-  // const handleTotalPrice = (priceValue) => {
-  //   setSubTotal(priceValue);
-  // };
+
+  const loader = useSelector((store) => store.cartReducer.isLoading);
+
+  const handleTotalPrice = () => {
+    let subTot = data?.reduce(
+      (acc, item) => acc + item.quantity * item.price,
+      1
+    );
+    setSubTotal(subTot);
+    localStorage.setItem("totalPrice", subTot);
+  };
 
   useEffect(() => {
     dispatch(getCartProduct());
   }, []);
 
   useEffect(() => {
-    let subTot = data.reduce((acc, item) => acc + item.price, 1);
-    setSubTotal(subTot);
-    localStorage.setItem("totalPrice", subTot);
+    handleTotalPrice();
   }, [data]);
+
+  if (loader) {
+    <h1 fontSize="6xl">Loading...</h1>;
+  }
 
   return (
     <>
       {data?.length > 0 ? (
         data?.map((item) => {
-          return <Cart key={item.id} {...item} />;
+          return (
+            <Cart key={item.id} {...item} handleTotalPrice={handleTotalPrice} />
+          );
         })
       ) : (
         <EmptyCart />
       )}
 
       {data?.length > 0 && (
-        <Box boxShadow="lg" p={4} mt={4} w={"50%"} margin="auto">
+        <Box
+          boxShadow="lg"
+          p={4}
+          // mt={4}
+          w={{ base: "80%", md: "50%", lg: "50%" }}
+          margin="auto"
+          // border={'1px solid red'}
+        >
           <Flex justifyContent="space-between" mb={4}>
-            <Text fontSize="2xl">Subtotal:</Text>
+            <Text fontSize={{ base: "lg", lg: "2xl" }}>Subtotal:</Text>
             <Text fontSize="2xl">₹ {subTotal.toFixed(2)}</Text>
           </Flex>
           <Flex justifyContent="space-between" mb={4}>
@@ -51,9 +69,11 @@ const CartPage = () => {
             <Text fontSize="lg">₹ {(subTotal / 6).toFixed(2)}</Text>
           </Flex>
           <Link to={"/checkout"}>
-            <Button size="lg" colorScheme="blue">
-              Check Out
-            </Button>
+            <Flex justify={"center"}>
+              <Button size="lg" colorScheme="blue">
+                Check Out
+              </Button>
+            </Flex>
           </Link>
         </Box>
       )}
