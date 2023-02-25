@@ -58,7 +58,16 @@
   width: 24px;
   margin-top: 3px;
 }
-@media screen and (max-width: 1150px) {
+
+@media screen and (min-width: 10px) {
+  .name{
+    width: 70px;
+  }
+  .optionLink1 {
+    font-size: 6px;
+  }
+}
+@media screen and (min-width: 475px) {
   .optionLink1 {
     font-size: 10px;
   }
@@ -75,11 +84,31 @@
     display: none;
   }
 }
-@media screen and (max-width: 475px) {
-  .name{
-    width: 70px;
+@media screen and (min-width: 1100px) {
+.logo {
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 24px;
+  margin-top: 3px;
+}
+
+.optionLink {
+  text-decoration: none;
+  color: rgb(196, 194, 194);
+  font-size: 12px;
+  font-weight: 400;
+  padding: 3px;
+}
+  .searchInput {
+    display: flex;
   }
-  .optionLink1 {
-    font-size: 6px;
+  .searchLogo {
+    display: flex;
+  }
+  .label {
+    font-size: 16px;
+  }
+   .name{
+    width: 80px;
   }
 }

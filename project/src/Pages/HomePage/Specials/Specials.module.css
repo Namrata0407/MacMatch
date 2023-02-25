@@ -1,0 +1,111 @@
+.mainDiv {
+  border: 1px solid black transparent;
+  width: 98.8%;
+  margin:auto;
+  margin-top: 5px;
+}
+.allHeading {
+  color: white;
+  position: absolute;
+  margin-top: 30px;
+  left: 37%;
+  width: 25%;
+  border: 1px solid cyan transparent;
+}
+.button {
+  border: 1px solid rgb(163, 160, 160);
+  padding: 5px;
+  border-radius: 100px;
+  margin-top: 10px;
+  color: rgb(163, 160, 160);
+  margin-left: 33%;
+  font-size: 14px;
+}
+.pro {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 600;
+}
+.beyond {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 500;
+}
+.lmbm {
+  text-align: center;
+  font-size: 25px;
+  color: rgb(86, 86, 255);
+}
+
+@media screen and (min-width: 10px) {
+  .allHeading {
+    margin-top: 10px;
+    left: 31%;
+    width: 40%;
+  }
+  .pro {
+    font-size: 12px;
+  }
+  .beyond {
+    font-size: 10px;
+  }
+  .button {
+    display: none;
+  }
+  .lmbm {
+    font-size: 8px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .allHeading {
+    margin-top: 10px;
+    left: 31%;
+    width: 40%;
+  }
+  .pro {
+    font-size: 24px;
+  }
+  .beyond {
+    font-size: 16px;
+  }
+  .button {
+    display: none;
+  }
+  .lmbm {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .allHeading {
+    margin-top: 30px;
+    left: 37%;
+    width: 25%;
+  }
+  .pro {
+    font-size: 30px;
+  }
+  .beyond {
+    font-size: 20px;
+  }
+  .button {
+    border: 1px solid rgb(163, 160, 160);
+    padding: 3px;
+    border-radius: 100px;
+    margin-top: 10px;
+    color: rgb(163, 160, 160);
+    margin-left: 42%;
+    font-size: 10px;
+  }
+  .lmbm {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(86, 86, 255);
+  }
+  .button{
+    display: flex;
+  }
+}

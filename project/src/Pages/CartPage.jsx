@@ -10,6 +10,8 @@ const CartPage = () => {
   const [subTotal, setSubTotal] = useState(0);
   const dispatch = useDispatch();
   const data = useSelector((store) => store.cartReducer.cart);
+
+
   const loader = useSelector((store) => store.cartReducer.isLoading);
 
   const handleTotalPrice = () => {

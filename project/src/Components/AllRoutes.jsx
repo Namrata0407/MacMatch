@@ -4,7 +4,6 @@ import Signup from "./../Pages/Signup/Signup";
 import Body from "./../Pages/HomePage/Body/Body";
 import Login from "./../Pages/Login/Login";
 import LoginAdmin from "./../Pages/LoginAdmin/LoginAdmin";
-
 import ProductStore from "../Pages/ProductStore";
 import SingleProductPage from "../Pages/SingleProductPage";
 import CartPage from "../Pages/CartPage";
@@ -17,28 +16,121 @@ import AdminUsers from "../Admin/Pages/AdminUsers";
 import AdminPricing from "../Admin/Pages/AdminPricing";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PrivateRouteAdmin from "./PrivateRoute/PrivateRouteAdmin";
+import Navbar2 from "./Navbar/Navbar2";
+import Navbar from "./Navbar/Navbar";
+import Footer from "./Footer/Footer";
 
 const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Body />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/signin" element={<Login />} />
-      <Route path="/signinadmin" element={<LoginAdmin />} />
-      <Route path="/store" element={<ProductStore />} />
-      <Route path="/product/:id" element={<SingleProductPage />} />
+      {/* website pages */}
+      <Route
+        path="/"
+        element={
+          <>
+            <Navbar />
+            <Navbar2 />
+            <Body />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <>
+            <Navbar />
+            <Navbar2 />
+            <Signup />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/signin"
+        element={
+          <>
+            <Navbar />
+            <Navbar2 />
+            <Login />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/signinadmin"
+        element={
+          <>
+            <Navbar />
+            <Navbar2 />
+            <LoginAdmin />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/store"
+        element={
+          <>
+            <Navbar />
+            <Navbar2 />
+            <ProductStore />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="/product/:id"
+        element={
+          <>
+            <Navbar />
+            <Navbar2 />
+            <SingleProductPage />
+            <Footer />
+          </>
+        }
+      />
       <Route
         path="/cart"
         element={
           <PrivateRoute>
-            <CartPage />
+            <>
+              <Navbar />
+              <Navbar2 />
+              <CartPage />
+              <Footer />
+            </>
           </PrivateRoute>
         }
       />
-      <Route path="/checkout" element={<Checkout />} />
-      <Route path="/shipping" element={<Shipping />} />
+      <Route
+        path="/checkout"
+        element={
+          <PrivateRoute>
+            <>
+              <Navbar />
+              <Navbar2 />
+              <Checkout />
+              <Footer />
+            </>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/shipping"
+        element={
+          <PrivateRoute>
+            <>
+              <Navbar />
+              <Navbar2 />
+              <Shipping />
+              <Footer />
+            </>
+          </PrivateRoute>
+        }
+      />
 
-      {/* admin */}
+      {/* admin pages */}
       <Route
         path="/admin"
         element={
@@ -47,10 +139,38 @@ const AllRoutes = () => {
           </PrivateRouteAdmin>
         }
       />
-      <Route path="/admin/orders" element={<AdminOrders />} />
-      <Route path="/admin/products" element={<AdminProducts />} />
-      <Route path="/admin/users" element={<AdminUsers />} />
-      <Route path="/admin/pricing" element={<AdminPricing />} />
+      <Route
+        path="/admin/orders"
+        element={
+          <PrivateRouteAdmin>
+            <AdminOrders />
+          </PrivateRouteAdmin>
+        }
+      />
+      <Route
+        path="/admin/products"
+        element={
+          <PrivateRouteAdmin>
+            <AdminProducts />
+          </PrivateRouteAdmin>
+        }
+      />
+      <Route
+        path="/admin/users"
+        element={
+          <PrivateRouteAdmin>
+            <AdminUsers />
+          </PrivateRouteAdmin>
+        }
+      />
+      <Route
+        path="/admin/pricing"
+        element={
+          <PrivateRouteAdmin>
+            <AdminPricing />
+          </PrivateRouteAdmin>
+        }
+      />
     </Routes>
   );
 };

@@ -66,7 +66,6 @@ export const AdminAddProductModal = () => {
         status: "success",
         // description:"Successfully added in your list",
         duration: 9000,
-        isClosable: true,
       }))
    
     onClose();

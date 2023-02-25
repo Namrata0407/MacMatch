@@ -11,7 +11,7 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useToast } from '@chakra-ui/react'
+import { useToast } from "@chakra-ui/react";
 
 function Signup() {
   const [password, setPassword] = useState("");
@@ -21,33 +21,36 @@ function Signup() {
   const [mobile, setMobile] = useState("");
   const [gender, setGender] = useState("");
   const navigate = useNavigate();
-  const toast = useToast()
+  const toast = useToast();
   // all toasts are here
-  const emailExist=()=>{
+  const emailExist = () => {
     toast({
-      title: 'Email Already Exist.',
+      title: "Email Already Exist.",
       description: "Please Enter New Email.",
-      status: 'error',
+      status: "error",
       duration: 9000,
       isClosable: true,
-    })
-  }
-  const signupSuccess=()=>{
+      position: "top",
+    });
+  };
+  const signupSuccess = () => {
     toast({
-      title: 'Signup Successful.',
+      title: "Signup Successful.",
       description: "Thank You!!Login Now",
-      status: 'success',
+      status: "success",
       duration: 9000,
       isClosable: true,
-    })
-
-  }
-// all toasts are here
+      position: "top",
+    });
+  };
+  // all toasts are here
   const postdata = async () => {
     setload(true);
     // for verify same email
     try {
-      let res = await fetch(`https://thankful-loafers-hare.cyclic.app/usersData`);
+      let res = await fetch(
+        `https://thankful-loafers-hare.cyclic.app/usersData`
+      );
       let data = await res.json();
       console.log(data);
       var mailAuth = false;
@@ -59,60 +62,59 @@ function Signup() {
       }
 
       if (mailAuth === true) {
-        // alert("Email already exist");
-        emailExist()
+        emailExist();
         setload(false);
-      }else{
+      } else {
         signupSuccess();
         navigate("/signin");
       }
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }
 
-    console.log("mailAuth",mailAuth)
+    console.log("mailAuth", mailAuth);
     // for normal signup
-  if(!mailAuth){  try {
-      let res = await fetch(`https://thankful-loafers-hare.cyclic.app/usersData`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-          mobile,
-          gender,
-          profile:
-            "https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/vendor/u1.jpg",
-        }),
-      });
-      let data = await res.json();
-      console.log(data);
-      setload(false);
-      // alert("Signup Successfull!");
-      // signupSuccess();
-      // navigate("/signin");
-    } catch (error) {
-      setload(false);
-      console.log(error);
-    }
+    if (!mailAuth) {
+      try {
+        let res = await fetch(
+          `https://thankful-loafers-hare.cyclic.app/usersData`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              password,
+              mobile,
+              gender,
+              profile:
+                "https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/vendor/u1.jpg",
+            }),
+          }
+        );
+        let data = await res.json();
+        console.log(data);
+        setload(false);
+        // alert("Signup Successfull!");
+        // signupSuccess();
+        // navigate("/signin");
+      } catch (error) {
+        setload(false);
+        console.log(error);
+      }
 
-    setname("");
-    setemail("");
-    setPassword("");
+      setname("");
+      setemail("");
+      setPassword("");
+    }
   };
-}
 
   return (
     <div>
       <div className={styles.mainDiv}>
-        <Heading
-          fontFamily="cursive"
-          textAlign="center"
-          color="rgb(45,45,47)"
-        >
+        <Heading fontFamily="cursive" textAlign="center" color="rgb(45,45,47)">
           Sign up
         </Heading>
         <FormControl>
@@ -160,7 +162,7 @@ function Signup() {
           </FormHelperText>
           <FormHelperText>
             If have an account click{" "}
-            <Link color="blue" fontWeight={'600'} href="/signin">
+            <Link color="blue" fontWeight={"600"} href="/signin">
               Sign in
             </Link>
           </FormHelperText>
