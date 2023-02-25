@@ -8,3 +8,5 @@ export const ADD_TO_CART_SUCCESS = "addToCart/success";
 export const DELETE_CART_SUCCESS = "deleteCart/success";
 
 export const UPDATE_CART_SUCCESS = "updateCart/success";
+
+export const ADD_ORDER_SUCCESS = "addOrder/success";

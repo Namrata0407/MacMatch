@@ -32,6 +32,7 @@ const reducer = (state = initialValue, action) => {
       };
 
     case types.ADD_TO_CART_SUCCESS:
+      console.log(payload);
       return {
         ...state,
         isLoading: false,
@@ -52,6 +53,13 @@ const reducer = (state = initialValue, action) => {
         cart: state.cart.map((item) => {
           return item.id === payload.id ? (item.id = payload.val) : item;
         }),
+      };
+
+    case types.ADD_ORDER_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        order: [...state.order, payload],
       };
 
     default:

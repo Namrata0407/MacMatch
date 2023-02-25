@@ -1,14 +1,14 @@
 import axios from "axios";
 
 export const getCartProductAPI = async () => {
-  const res = await axios.get(`https://thankful-loafers-hare.cyclic.app/carts`);
+  const res = await axios.get(`https://mockserver-rny6.onrender.com/carts`);
   return res.data;
 };
 
 export const addToCartAPI = async (payload) => {
   try {
     const res = await axios.post(
-      `https://thankful-loafers-hare.cyclic.app/carts`,
+      `https://mockserver-rny6.onrender.com/carts`,
       payload
     );
     return res.data;
@@ -20,7 +20,7 @@ export const addToCartAPI = async (payload) => {
 export const updateCartItemAPI = async (id, val) => {
   try {
     const res = await axios.patch(
-      `https://thankful-loafers-hare.cyclic.app/carts/${id}`,
+      `https://mockserver-rny6.onrender.com/carts/${id}`,
       {
         quantity: val,
       }
@@ -33,8 +33,28 @@ export const updateCartItemAPI = async (id, val) => {
 export const removeCartItemAPI = async (id) => {
   try {
     const res = await axios.delete(
-      `https://thankful-loafers-hare.cyclic.app/carts/${id}`
+      `https://mockserver-rny6.onrender.com/carts/${id}`
     );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const addToOrderItemAPI = async (payload) => {
+  try {
+    const res = await axios.post(
+      `https://mockserver-rny6.onrender.com/orders`,
+      payload
+    );
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const emptyCartAPI = async () => {
+  try {
+    await axios.patch("https://mockserver-rny6.onrender.com/carts", {});
   } catch (error) {
     console.log(error);
   }

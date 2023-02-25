@@ -27,7 +27,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCartProduct } from "../Redux/cart/cart.action";
 import { AddIcon, MinusIcon, SmallAddIcon } from "@chakra-ui/icons";
 import { Icon } from "@chakra-ui/react";
-import AddressForm from "../Components/Shipping/AddressForm";
+
+let totalPrice;
 
 const date = new Date(new Date().setDate(new Date().getDate() + 2));
 const options = {
@@ -43,10 +44,11 @@ const Checkout = () => {
   const btnRef = React.useRef();
 
   const dispatch = useDispatch();
-  const data = useSelector((store) => store.cart);
+  const data = useSelector((store) => store.cartReducer.cart);
 
   useEffect(() => {
     dispatch(getCartProduct());
+    totalPrice = localStorage.getItem("totalPrice") || 0;
   }, []);
 
   return (
@@ -56,19 +58,20 @@ const Checkout = () => {
         w={"80%"}
         m={"auto"}
         borderBottom="1px solid gray"
-        p={4}
+        py={4}
+        gap="20px"
       >
-        <Text fontSize={"3xl"}>Checkout</Text>
+        <Text fontSize={{ base: "xl", lg: "2xl" }}>Checkout</Text>
         <Link ref={btnRef} colorScheme="teal" onClick={onOpen}>
-          Show Order Summary
+          <Text fontSize={{ base: "sm", lg: "xl" }}>Show Order Summary</Text>
         </Link>
       </Flex>
 
       <Grid p={6} gap="20px" borderBottom="1px solid gray" w={"80%"} m={"auto"}>
-        <Text fontSize={"5xl"} fontWeight="400">
+        <Text fontSize={{ base: "xl", lg: "3xl" }} fontWeight="400">
           How would you like to get your order?
         </Text>
-        <Text fontSize={"xl"} fontWeight="200">
+        <Text fontSize={{ base: "sm", lg: "sm" }} fontWeight="200">
           Delivers to: <span>248001</span>
         </Text>
       </Grid>
@@ -81,7 +84,11 @@ const Checkout = () => {
         mb={"30px"}
         gap="30px"
       >
-        <Text fontSize={"3xl"} fontWeight="500" textAlign={"start"}>
+        <Text
+          fontSize={{ base: "xl", lg: "3xl" }}
+          fontWeight="500"
+          textAlign={"start"}
+        >
           In stock and ready to ship.
         </Text>
         <SimpleGrid columns={3} gap={"20px"} p={"20px"}>
@@ -95,28 +102,45 @@ const Checkout = () => {
           })}
         </SimpleGrid>
 
-        <Text fontSize={"2xl"} textAlign={"start"}>
+        <Text
+          fontSize={{ base: "lg", lg: "xl" }}
+          fontWeight={600}
+          textAlign={"start"}
+        >
           Select your delivery method:
         </Text>
 
-        <Flex gap="20px" justify="space-between">
+        <Flex
+          gap="20px"
+          justify="space-between"
+          direction={{ base: "column", md: "row", lg: "row" }}
+        >
           <Grid
             border={"2px solid #0071E3"}
-            width="50%"
+            width={{ base: "100%", md: "50%", lg: "50%" }}
             p={"15px"}
             borderRadius="20px"
             height={"100px"}
           >
             <Flex justify={"space-between"}>
-              <Text fontSize={"xl"} fontWeight="600">
+              <Text fontSize={{ base: "sm", lg: "xl" }} fontWeight="600">
                 Delivers {formattedDate}
               </Text>
-              <Text>FREE</Text>
+              <Text fontSize={{ base: "sm", lg: "xl" }}>FREE</Text>
             </Flex>
-            <Text textAlign={"start"}>Express Delivery</Text>
+            <Text textAlign={"start"} fontSize={{ base: "sm", lg: "lg" }}>
+              Express Delivery
+            </Text>
           </Grid>
-          <Grid gap={"10px"} w="50%" textAlign={"start"} p="15px">
-            <Text fontSize={'xl'} fontWeight={"500"}>Some things to keep in mind:</Text>
+          <Grid
+            gap={"10px"}
+            width={{ base: "100%", md: "50%", lg: "50%" }}
+            textAlign={"start"}
+            p="15px"
+          >
+            <Text fontSize={"xl"} fontWeight={"500"}>
+              Some things to keep in mind:
+            </Text>
             <Text>
               Standard deliveries are made between 8:00 a.m. and 6:00 p.m.,
               Monday-Saturday.
@@ -130,19 +154,30 @@ const Checkout = () => {
         </Flex>
       </Grid>
       <Link to={"/shipping"}>
-        <Button colorScheme="blue" size="lg">
-          Continue to Shipping Address
-        </Button>
+        <Flex justify={"center"}>
+          <Button colorScheme="blue" size="lg">
+            Continue to Shipping Address
+          </Button>
+        </Flex>
       </Link>
 
-      <Box p={"30px"} w="80%" margin={"auto"}>
+      <Box
+        p={"30px"}
+        width={{ base: "100%", md: "80%", lg: "80%" }}
+        margin={"auto"}
+      >
         <Accordion allowMultiple>
           <AccordionItem p={6}>
             {({ isExpanded }) => (
               <>
                 <h2>
                   <AccordionButton>
-                    <Box as="span" flex="1" fontSize={"3xl"} textAlign="left">
+                    <Box
+                      as="span"
+                      flex="1"
+                      fontSize={{ base: "xl", lg: "3xl" }}
+                      textAlign="left"
+                    >
                       FAQ for Delivery
                     </Box>
                     {isExpanded ? (
@@ -154,19 +189,27 @@ const Checkout = () => {
                   </AccordionButton>
                 </h2>
 
-                <AccordionPanel pb={6} textAlign="start">
+                <AccordionPanel textAlign="start">
                   {/* // start */}
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          // w={"100%"}
+                        >
                           When will I get my items?
                         </Box>
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       By entering a zip code, you’ll get estimated delivery and
                       pickup dates for your items. You’ll get a final delivery
                       date after you place your order. Delivery estimates are
@@ -176,17 +219,24 @@ const Checkout = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          flex="1"
+                          textAlign="left"
+                        >
                           Can I pick up my items at an Apple Store?
                         </Box>
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       Yes. If you choose pickup, you’ll select a store and a
                       pickup date for your items during checkout. Not all items
                       are available for pickup. We’ll send you a text message
@@ -195,10 +245,15 @@ const Checkout = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          flex="1"
+                          textAlign="left"
+                        >
                           How do I learn what my Apple Store is doing to make
                           shopping and services safer for customers?
                         </Box>
@@ -206,7 +261,9 @@ const Checkout = () => {
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       We’re putting safety first by taking extra measures to
                       ensure a clean, safer environment for our customers. This
                       includes health screenings, requiring the use of face
@@ -216,17 +273,24 @@ const Checkout = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          flex="1"
+                          textAlign="left"
+                        >
                           What are my payment options?
                         </Box>
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       We accept Apple Pay(opens in a new window), most credit
                       and debit cards, PayPal, and Apple Store Gift Cards —
                       though PayPal, Apple Store Gift Cards, and financing
@@ -237,17 +301,24 @@ const Checkout = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          flex="1"
+                          textAlign="left"
+                        >
                           How is sales tax calculated?
                         </Box>
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       By entering a zip code, you’ll get estimated delivery and
                       pickup dates for your items. You’ll get a final delivery
                       date after you place your order. Delivery estimates are
@@ -261,17 +332,24 @@ const Checkout = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          flex="1"
+                          textAlign="left"
+                        >
                           Does Apple offer an education discount?
                         </Box>
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       Yes. Apple offers special pricing for students, teachers,
                       administrators, staff members, and homeschooling programs.
                       If you think you qualify, visit the Apple Store for
@@ -280,17 +358,24 @@ const Checkout = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          flex="1"
+                          textAlign="left"
+                        >
                           What are my financing options?
                         </Box>
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       Now you can pay monthly and interest-free◊ for eligible
                       items when you choose to check out with Apple Card Monthly
                       Installments. And if you’re buying an iPhone, Mac, iPad,
@@ -299,10 +384,15 @@ const Checkout = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          flex="1"
+                          textAlign="left"
+                        >
                           When I buy from apple.com, does my iPhone come ready
                           to use?
                         </Box>
@@ -310,7 +400,9 @@ const Checkout = () => {
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       If you chose to connect your new iPhone to AT&T, Sprint,
                       T-Mobile, or Verizon at the time of purchase, it will
                       arrive ready to use. Just turn it on and follow the
@@ -330,17 +422,24 @@ const Checkout = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          flex="1"
+                          textAlign="left"
+                        >
                           What is eSIM?
                         </Box>
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       An eSIM is a digital SIM that eliminates the need for a
                       physical SIM card. With eSIM, you can quickly and easily
                       transfer an existing cellular plan or get a new cellular
@@ -358,10 +457,15 @@ const Checkout = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          flex="1"
+                          textAlign="left"
+                        >
                           When I buy an iPhone from Apple, will the eSIM be
                           activated?
                         </Box>
@@ -369,7 +473,9 @@ const Checkout = () => {
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       Carrier-connected iPhone SE, iPhone 12, iPhone 13, iPhone
                       13 mini, iPhone 14 and iPhone 14 Pro models will arrive
                       ready to activate with eSIM and can connect to your
@@ -388,10 +494,15 @@ const Checkout = () => {
                     </AccordionPanel>
                   </AccordionItem>
 
-                  <AccordionItem p={4}>
+                  <AccordionItem>
                     <h2>
                       <AccordionButton>
-                        <Box as="span" flex="1" textAlign="left">
+                        <Box
+                          as="span"
+                          fontSize={{ base: "sm", md: "17px", lg: "17px" }}
+                          flex="1"
+                          textAlign="left"
+                        >
                           Are there differences between an iPhone for AT&T,
                           T-Mobile, Sprint, and Verizon?
                         </Box>
@@ -399,7 +510,9 @@ const Checkout = () => {
                       </AccordionButton>
                     </h2>
 
-                    <AccordionPanel pb={4}>
+                    <AccordionPanel
+                      fontSize={{ base: "sm", lg: "16px", lg: "16px" }}
+                    >
                       By entering a zip code, you’ll get estimated delivery and
                       pickup dates for your items. You’ll get a final delivery
                       date after you place your order. Delivery estimates are
@@ -444,7 +557,7 @@ const Checkout = () => {
               borderBottom={"1px solid gray"}
               p={6}
             >
-              <Text>4 Items</Text>
+              <Text>{data?.length} Items</Text>
               <Link to={"/cart"}>Edit Bag</Link>
             </Flex>
 
@@ -458,7 +571,7 @@ const Checkout = () => {
                 <Text>Shipping</Text>
               </Grid>
               <Grid gap={4}>
-                <Text>1234543</Text>
+                <Text>₹ {totalPrice}</Text>
                 <Text textAlign={"end"}>FREE</Text>
               </Grid>
             </Flex>
@@ -472,8 +585,8 @@ const Checkout = () => {
                 <Text>Total</Text>
               </Grid>
               <Grid gap={4}>
-                <Text textAlign={"end"}>1234543</Text>
-                <Text>or from ₹48133.00 /mo.Per Month with EMI◊◊</Text>
+                <Text textAlign={"end"}>₹ {totalPrice}</Text>
+                <Text>or from ₹ {(totalPrice / 6).toFixed(2)} Per Month with EMI◊◊</Text>
               </Grid>
             </Flex>
           </DrawerBody>
