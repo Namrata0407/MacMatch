@@ -11,6 +11,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
 import styles from "./LoginAdmin.module.css";
+import { useToast } from "@chakra-ui/react";
 
 function LoginAdmin() {
   const [email, setemail] = useState("");
@@ -18,6 +19,29 @@ function LoginAdmin() {
   const [load, setload] = useState(false);
   const navigate = useNavigate();
   const { logoutUser } = useContext(AuthContext);
+  const toast = useToast();
+
+  const wrongEmail = () => {
+    toast({
+      title: "Wrong Email or Password.",
+      description: "Please enter right email or password!!!",
+      status: "error",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+  };
+
+  const loginSuccess = () => {
+    toast({
+      title: "Login Successful.",
+      description: "Thank You For Login, Admin!!!",
+      status: "success",
+      duration: 9000,
+      isClosable: true,
+      position: "top",
+    });
+  };
 
   const submitLogin = async () => {
     setload(true);
@@ -38,9 +62,11 @@ function LoginAdmin() {
       }
       setload(false);
       if (Auth === false) {
-        alert("Please enter right email or password!");
+        // alert("Please enter right email or password!");
+        wrongEmail();
       } else {
-        alert("Login Successfull!");
+        // alert("Login Successfull!");
+        loginSuccess();
         navigate("/admin");
       }
 
@@ -57,11 +83,7 @@ function LoginAdmin() {
   return (
     <div>
       <div className={styles.mainDiv}>
-        <Heading
-          fontFamily="cursive"
-          color="rgb(45,45,47)"
-          textAlign="center"
-        >
+        <Heading fontFamily="cursive" color="rgb(45,45,47)" textAlign="center">
           Admin Sign in
         </Heading>
         <FormControl>
@@ -85,7 +107,7 @@ function LoginAdmin() {
           </FormHelperText>
           <FormHelperText>
             If have no account click{" "}
-            <Link color="blue" fontWeight={'600'} href="/signup">
+            <Link color="blue" fontWeight={"600"} href="/signup">
               Signup
             </Link>
           </FormHelperText>

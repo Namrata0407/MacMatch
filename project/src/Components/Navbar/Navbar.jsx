@@ -39,7 +39,6 @@ let authentication = localStorage.getItem("name");
 const NAV_ITEMS = [
   {
     label: "Store",
-    href: "/store",
     children: [
       {
         label: "MacBook Air",
@@ -89,6 +88,10 @@ const NAV_ITEMS = [
     ],
   },
   {
+    label: "Products",
+    href: "/store",
+  },
+  {
     label: "Mac",
     href: "/store?filter=MacBook+Air&filter=MacBook+Pro",
   },
@@ -120,10 +123,7 @@ const NAV_ITEMS = [
     label: "Accessories",
     href: "/store?filter=Accessorires",
   },
-  {
-    label: "Support",
-    href: "/",
-  },
+  
 ];
 
 export default function Navbar() {

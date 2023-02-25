@@ -1,18 +1,11 @@
 import AllRoutes from "./Components/AllRoutes";
-import Navbar2 from "./Components/Navbar/Navbar2";
-import Navbar from "./Components/Navbar/Navbar";
-import Footer from "./Components/Footer/Footer";
 import BackToTop from "./Components/BackToTop/BackToTop";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Navbar2 />
-
       <AllRoutes />
-      <BackToTop/>
-      <Footer />
+      <BackToTop />
     </div>
   );
 }

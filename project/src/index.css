@@ -4,3 +4,6 @@ body {
   box-sizing: border-box;
    font-family: SF Pro Text,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
+html{
+  scroll-behavior: smooth;
+}

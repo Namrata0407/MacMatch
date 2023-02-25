@@ -4,6 +4,10 @@ import { useToast } from "@chakra-ui/react";
 
 export const AuthContext = createContext();
 
+export const logoutAdmin = ()=>{
+  localStorage.clear()
+}
+
 function AuthContextProvider({ children }) {
   const [isAuth, setIsAuth] = useState(false);
   const [name, setName] = useState("");
@@ -18,13 +22,14 @@ function AuthContextProvider({ children }) {
   const logoutSuccess = () => {
     toast({
       title: "Logout Successful.",
-      description: "Thank You!!Login Now",
+      description: "You are Logged out now",
       status: "error",
       duration: 9000,
       isClosable: true,
       position:'top'
     });
   };
+
   const logoutUser = () => {
     // alert("User logged out Successfull!!");
     logoutSuccess();
