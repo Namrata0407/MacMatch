@@ -4,6 +4,7 @@ import {
   Flex,
   Heading,
   Image,
+  Input,
   Table,
   TableContainer,
   Tbody,
@@ -15,9 +16,7 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-
-// AiFillEye
-
+import {FcSearch} from "react-icons/fc";
 import { FaRegEye } from "react-icons/fa";
 import { GrEdit } from "react-icons/gr";
 import { MdOutlineDeleteOutline } from "react-icons/md";
@@ -39,6 +38,9 @@ const AdminProducts = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [current, setCurrentPage] = useState(Number(searchParams.get("_page")) || 1);
  const [total,setTotal] = useState(1);
+const [searchQuery, setSearchQuery] = useState("");
+
+//for search
 
 
 useEffect(()=>{
@@ -50,11 +52,14 @@ let  params = {};
  const data = {
   params: {
     _limit: 9,
-    _page: searchParams.get("_page") || 1
+    _page: searchParams.get("_page") || 1,
+   
   }
  }
 
- dispatch(getAdminDataProduct(data)).then((res)=>setTotal(Math.ceil(res)))
+  dispatch(getAdminDataProduct(data)).then((res)=>setTotal(Math.ceil(res)))
+
+
 
 },[current, searchParams.get("_page")]);
 
@@ -62,10 +67,28 @@ let  params = {};
     dispatch(getAdminDataProduct);
   }, []);
   // console.log(data);
+
+
   return (
     <>
       <Flex flexWrap={"wrap"} margin={"30px"} justifyContent={"space-between"}>
         <Heading >All Products</Heading>
+
+
+        <Input
+      value={searchQuery}
+      // onChange={handleSearchdata}
+
+        border={"1px solid teal"}
+        width={"50%"}
+    color='teal'
+    placeholder='Search Product'
+    _placeholder={{ color: 'inherit' }}
+   
+  />
+
+
+
         <AdminAddProductModal />
       </Flex>
       <Box border={"5px solid #023e8a"} maxHeight={"500px"} overflow="scroll">

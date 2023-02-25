@@ -1,11 +1,6 @@
 import { Box, Button, Flex, Heading, Image, Table, TableContainer, Tbody, Td, Text, Tfoot, Th, Thead, Tr } from "@chakra-ui/react"
 import { useEffect, useState } from "react";
 
-// AiFillEye
-
-// import { FaRegEye } from "react-icons/fa";
-// import { GrEdit } from "react-icons/gr";
-// import { MdOutlineDeleteOutline } from "react-icons/md";
 import {SlHandbag} from "react-icons/sl"
 import { useDispatch, useSelector } from "react-redux";
 import { ordersAdminData } from "../../Redux/AdminRedux/admin.action";
@@ -42,7 +37,9 @@ const dispatch = useDispatch();
                                 <Th color="white">Product image</Th>
                                 <Th color="white">Product name</Th>
                                 <Th color="white">category</Th>
+                                <Th color="white">quantity</Th>
                                 <Th color="white">price</Th>
+                               
                                 <Th color="white">Status</Th>
                                 {/* <Th color="white">Action</Th> */}
                             </Tr>
@@ -55,8 +52,10 @@ const dispatch = useDispatch();
    <Td><Image borderRadius={"20px"} width={"90px"} height={"100px"} src={el.img} alt={"orderimage"}/></Td>
    <Td>{el.title}</Td>
    <Td>{el.category}</Td>
+   <Td>{el.qantity}</Td>
    <Td>{"₹ "}{el.price}</Td>
-   <Td>Pending</Td>
+   <Td><Text color={el.payment === false ? "red" : "green"}>{el.payment === false ? "Pending" : "Done"}</Text></Td>
+ 
    {/* <Td> <Flex gap={"10px"} > <AdminShowProductModal /> <AdminEditProductModal /> <AdminDeleteProductModal/> </Flex> </Td> */}
 </Tr>
                 ))}            
