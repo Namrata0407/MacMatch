@@ -1,5 +1,7 @@
 import {
   addToCartAPI,
+  addToOrderItemAPI,
+  emptyCartAPI,
   getCartProductAPI,
   removeCartItemAPI,
   updateCartItemAPI,
@@ -32,6 +34,7 @@ const addToCart = (payload) => {
   };
 };
 
+/*---------- Not using these 3 types --------------- */
 const deleteCart = (id) => {
   return {
     type: types.DELETE_CART_SUCCESS,
@@ -46,6 +49,14 @@ const updateCart = (id, val) => {
   };
 };
 
+const addToOrder = (payload) => {
+  return {
+    type: types.ADD_ORDER_SUCCESS,
+    payload,
+  };
+};
+/*---------- Not using these types --------------- */
+
 export const getCartProduct = () => async (dispatch) => {
   try {
     dispatch(cartRequest());
@@ -57,10 +68,12 @@ export const getCartProduct = () => async (dispatch) => {
 };
 
 export const addToCartFn = (payload) => async (dispatch) => {
+  dispatch(addToCart(payload));
   try {
     dispatch(cartRequest());
     const res = await addToCartAPI(payload);
-    dispatch(addToCart(res));
+    dispatch(getCartProduct());
+    // dispatch(addToCart(res));
   } catch (error) {
     dispatch(cartError());
   }
@@ -82,6 +95,24 @@ export const updateCartItem = (id, val) => async (dispatch) => {
     dispatch(cartRequest());
     const res = await updateCartItemAPI(id, val);
     dispatch(getCartProduct());
+  } catch (error) {
+    dispatch(cartError());
+  }
+};
+
+export const addToOrderItem = (payload) => async (dispatch) => {
+  try {
+    dispatch(cartRequest());
+    const res = await addToOrderItemAPI(payload);
+  } catch (error) {
+    dispatch(cartError());
+  }
+};
+
+export const emptyCart = () => async (dispatch) => {
+  try {
+    dispatch(cartRequest());
+    const res = await emptyCartAPI();
   } catch (error) {
     dispatch(cartError());
   }

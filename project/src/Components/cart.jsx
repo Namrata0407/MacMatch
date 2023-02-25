@@ -3,27 +3,30 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeCartItem, updateCartItem } from "../Redux/cart/cart.action";
 
-const Cart = ({ id, title, category, img, price, description, quantity }) => {
-  // const [quantity, setQuantity] = useState(1);
-  const [qPrice, setQPrice] = useState(0);
-  const [total, setTotal] = useState(0);
+const Cart = ({
+  id,
+  title,
+  category,
+  img,
+  price,
+  description,
+  quantity,
+  handleTotalPrice,
+}) => {
   const dispatch = useDispatch();
-
-  // const handleQuantityChange = (value) => {
-  //   setQuantity(value);
-  // };
 
   const handleQuantityChange = (value, id) => {
     dispatch(updateCartItem(id, value));
+    handleTotalPrice();
   };
+
+  // useEffect(() => {
+  //   handleQuantityChange();
+  // }, []);
 
   const handleRemoveButton = async (id) => {
     dispatch(removeCartItem(id));
   };
-
-  // useEffect(() => {
-  //   setQPrice((quantity * price).toFixed(2));
-  // }, [quantity]);
 
   return (
     <Box w="80%" m={"auto"}>
@@ -36,7 +39,7 @@ const Cart = ({ id, title, category, img, price, description, quantity }) => {
       >
         {/* Ist box */}
 
-        <Box w={{ base: "100%", lg: "20%" }} py={8}>
+        <Box w={{ base: "100%", md: "20%", lg: "20%" }} py={8}>
           <Image
             p={2}
             height="140px"
@@ -47,10 +50,11 @@ const Cart = ({ id, title, category, img, price, description, quantity }) => {
         </Box>
 
         <Flex
-          w={"80%"}
+          w={["100%", "80%", "80%"]}
           mb={4}
           justify="space-between"
-          //   border="1px solid red"
+          // border="1px solid red"
+          direction={["column", "row", "row"]}
           p={4}
         >
           {" "}
@@ -58,19 +62,21 @@ const Cart = ({ id, title, category, img, price, description, quantity }) => {
           <Grid textAlign="start" p={6}>
             {" "}
             {/* Ist box inside image right */}
-            <Text fontSize={"2xl"}>{title}</Text>
-            <Text>Pay 16% pa for 6 months</Text>
+            <Text textAlign={["center","start","start"]} fontSize={{ base: "xl", md: "lg", lg: "2xl" }} fontWeight={[800,600,600]}>{title}</Text>
+            <Text textAlign={["center","start","start"]} fontSize={{ base: "sm", md: "sm", lg: "md" }}>
+              Pay 16% pa for 6 months
+            </Text>
           </Grid>
           <Grid gap={10}>
             {" "}
             {/* IInd box inside image right */}
             <Flex justify="space-between" p={4}>
               <Flex>
-                <Text fontSize="md" mr={4}>
+                <Text fontSize={{ base: "sm", md: "sm", lg: "md" }} mr={4}>
                   Quantity:
                 </Text>
                 <select
-                  value={quantity}
+                  // value={quantity}
                   onChange={(e) => handleQuantityChange(e.target.value, id)}
                 >
                   {[...Array(10)].map((_, i) => (
@@ -80,11 +86,21 @@ const Cart = ({ id, title, category, img, price, description, quantity }) => {
                   ))}
                 </select>
               </Flex>
-              <Text>₹ {price * quantity}</Text>
+              <Text fontSize={{ base: "sm", md: "sm", lg: "md" }}>
+                ₹ {price * quantity}
+              </Text>
             </Flex>
             <Box>
-              <Text>Get up to 10% savings with eligible card(s)^</Text>
-              <Text textAlign={"end"}>
+              <Text
+                textAlign={["center", "end", "end"]}
+                fontSize={{ base: "sm", md: "sm", lg: "md" }}
+              >
+                Get up to 10% savings with eligible card(s)^
+              </Text>
+              <Text
+                textAlign={["center", "end", "end"]}
+                fontSize={{ base: "sm", md: "sm", lg: "md" }}
+              >
                 ₹{((price * quantity) / 6).toFixed(2)}/mo.^
               </Text>
             </Box>
