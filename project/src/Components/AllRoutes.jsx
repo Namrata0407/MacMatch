@@ -19,6 +19,7 @@ import PrivateRouteAdmin from "./PrivateRoute/PrivateRouteAdmin";
 import Navbar2 from "./Navbar/Navbar2";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
+import AdminNavbar from "../Admin/Components/adminNavbar";
 
 const AllRoutes = () => {
   return (
@@ -134,8 +135,11 @@ const AllRoutes = () => {
       <Route
         path="/admin"
         element={
+
           <PrivateRouteAdmin>
-            <AdminDashboard />
+            <><AdminNavbar/>
+            <AdminDashboard /></>
+            
           </PrivateRouteAdmin>
         }
       />

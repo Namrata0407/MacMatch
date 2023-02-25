@@ -44,6 +44,7 @@ import AdminDashboard from '../Pages/AdminDashboard';
 import { Route, Routes } from 'react-router-dom';
 import AdiminRoutes from './AdminRoutes';
 import logo from "../Images/logo.png";
+import { logoutAdmin } from '../../Context/AuthContext';
 
 
 const LinkItems = [
@@ -220,7 +221,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
                 borderColor={useColorModeValue('gray.200', 'gray.700')}>
                 <MenuItem>Settings</MenuItem>
                 <MenuDivider />
-                <MenuItem>Sign out</MenuItem>
+                <MenuItem >Sign out</MenuItem>
               </MenuList>
             </Menu>
           </Flex>
