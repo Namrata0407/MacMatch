@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "../Carousels/Carousels";
+import {Carousels2} from "../Carousels2/Carousels2";
 import Iphone14 from "../Iphone14/Iphone14";
 import Iphone14pro from "../Iphone14pro/Iphone14pro";
 import Specials from "../Specials/Specials";
@@ -18,8 +19,9 @@ const Body = () => {
       <TwoImages/>
       <TwoImages2/>
       <TwoImages3/>
-      <Carousel/>
       <Specials/>
+      <Carousels2/>
+      <Carousel/>
     </div>
   );
 };
