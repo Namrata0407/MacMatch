@@ -66,7 +66,7 @@ function LoginAdmin() {
     // console.log(load);
     try {
       let res = await fetch(
-        `https://thankful-loafers-hare.cyclic.app/adminMacMatch `
+        `https://mockserver-rny6.onrender.com/adminMacMatch`
       );
       let data = await res.json();
       // console.log(data);

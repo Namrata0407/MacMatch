@@ -95,7 +95,7 @@ const Checkout = () => {
           columns={[1, 2, 3]}
           gap={"20px"}
           p={"20px"}
-          border="1px solid black"
+          // border="1px solid black"
         >
           {data?.map((item) => {
             return (

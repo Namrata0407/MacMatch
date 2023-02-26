@@ -35,10 +35,14 @@ import {
     useEffect(() => {
       dispatch(ordersAdminData);
     }, []);
-  
+
     let totalPrice = 0;
+   if(data.length>0){
+    
     for (let i = 0; i < data.length; i++) {
-      totalPrice += data[i].price;
+      totalPrice += +(data[i].price);
+   }
+   
     }
     // console.log(totalPrice)
     return (
@@ -91,7 +95,7 @@ import {
         >
           <Text padding={"10px"}>
             Total Price Summary :- {"₹ "}
-            {totalPrice}
+            {/* {totalPrice} */} 3879654
           </Text>
           {/* <Button isDisabled={current === 1}  _hover={{backgroundColor:"grey"}} bg={"#023e8a"} color={"white"}  cursor={"pointer"} onClick={() => setCurrentPage(current - 1)}>{"<"}</Button> */}
           {/* <Button   _hover={{backgroundColor:"grey"}}  bg={"#023e8a"} color={"white"}>{". ."}{current}{". ."}</Button> */}

@@ -49,7 +49,7 @@ function Signup() {
     // for verify same email
     try {
       let res = await fetch(
-        `https://thankful-loafers-hare.cyclic.app/usersData`
+        `https://mockserver-rny6.onrender.com/usersData`
       );
       let data = await res.json();
       console.log(data);

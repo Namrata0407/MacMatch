@@ -41,7 +41,7 @@ export const getAdminUserDataFromAPI = async()=>{
 
 
 export const deleteAdminUserDataFromAPI = async(id)=>{
-    const responce = await axios.delete(`:https://mockserver-rny6.onrender.com/usersData/${id}`)
+    const responce = await axios.delete(`https://mockserver-rny6.onrender.com/usersData/${id}`)
     return responce.data
 }
 

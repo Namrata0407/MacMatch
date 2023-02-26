@@ -50,7 +50,7 @@ function Login() {
     // console.log(load);
     try {
       let res = await fetch(
-        `https://thankful-loafers-hare.cyclic.app/usersData`
+        `https://mockserver-rny6.onrender.com/usersData`
       );
       let data = await res.json();
       // console.log(data);

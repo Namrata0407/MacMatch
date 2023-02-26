@@ -137,7 +137,7 @@ export const ProdCard = ({ el }) => {
                         Item removed from your Cart
                       </Text>
                     ),
-                    status: "success",
+                    status: "error",
                     isClosable: true,
                     position: "top",
                   });
