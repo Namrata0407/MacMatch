@@ -25,8 +25,8 @@ function LoginAdmin() {
   const navigate = useNavigate();
   const userEmail = "admin@macmatch.com";
   const userPass = "admin";
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
+  const [email,setEmail] = useState(userEmail);
+  const [password,setPassword] = useState(userPass);
 
   const handleLoginAdmin = () => {
       if(email === userEmail && userPass === password){

@@ -8,7 +8,7 @@ import Navbar from "./Components/Navbar/Navbar";
 function App() {
   // const [athenticated,setAuth] = useState(JSON.parse(localStorage.getItem("adminAuth")));
   
-const [athenticated, setAuth] = useState(JSON.parse(localStorage.getItem("adminAuth")))
+const [athenticated, setAuth] = useState(JSON.parse(localStorage.getItem('adminAuth')))
 
   return (
     <div className="App">

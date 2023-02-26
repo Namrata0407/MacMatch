@@ -14,12 +14,12 @@ import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
 function Signup() {
-  const [password, setPassword] = useState("");
-  const [name, setname] = useState("");
-  const [email, setemail] = useState("");
+  const [password, setPassword] = useState("1234");
+  const [name, setname] = useState("Kausik");
+  const [email, setemail] = useState("k@gmail.com");
   const [load, setload] = useState(false);
-  const [mobile, setMobile] = useState("");
-  const [gender, setGender] = useState("");
+  const [mobile, setMobile] = useState("7454657343443");
+  const [gender, setGender] = useState("Male");
   const navigate = useNavigate();
   const toast = useToast();
   // all toasts are here

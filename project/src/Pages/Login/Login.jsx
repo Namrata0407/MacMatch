@@ -14,8 +14,8 @@ import styles from "./Login.module.css";
 import { useToast } from "@chakra-ui/react";
 
 function Login() {
-  const [email, setemail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setemail] = useState("k@gmail.com");
+  const [password, setPassword] = useState("1234");
   const [load, setload] = useState(false);
   const navigate = useNavigate();
   const toast = useToast();
