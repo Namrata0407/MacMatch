@@ -68,4 +68,10 @@ it an e-commerce website which provides various types of electronic products wit
 # Overview Of Project
 
 ## Home Page
- 
+ ![HomePageOne](https://user-images.githubusercontent.com/112812835/221432362-7a9776e1-1b0e-48c2-876f-af43ebb77be3.png)
+ ![HomePageTwo](https://user-images.githubusercontent.com/112812835/221432376-8d06b0d7-145f-44b6-8b3a-cfc37c72d417.png)
+
+## Product Page
+![product page](https://user-images.githubusercontent.com/112812835/221433522-ff077ed6-527d-44d1-b754-9bcbaf5fe622.png)
+
+
