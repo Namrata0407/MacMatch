@@ -73,5 +73,17 @@ it an e-commerce website which provides various types of electronic products wit
 
 ## Product Page
 ![product page](https://user-images.githubusercontent.com/112812835/221433522-ff077ed6-527d-44d1-b754-9bcbaf5fe622.png)
+![productpageTwo](https://user-images.githubusercontent.com/112812835/221433587-683f9253-5fa1-40be-aa40-7dbb2b5a0727.png)
+![singleproductpage](https://user-images.githubusercontent.com/112812835/221433606-77abfe50-68b7-49c6-aaac-958c9729db6f.png)
+
+## Cart Page
+![cartpage](https://user-images.githubusercontent.com/112812835/221433764-29c8bf26-638a-44f3-b4db-c2a3e0d22ad4.png)
+![cartpageTwo](https://user-images.githubusercontent.com/112812835/221433972-1f0be9d3-1f0f-4d63-9370-2b5b1fa15f4b.png)
+
+## Admin Page
+![adminpageOne](https://user-images.githubusercontent.com/112812835/221434270-271f5d25-b2c3-4584-9d51-0fa77bb4e146.png)
+![adminPageTwo](https://user-images.githubusercontent.com/112812835/221434353-9f34b0b7-7c43-4e9b-beef-155de9abbf06.png)
+![adminPageThree](https://user-images.githubusercontent.com/112812835/221434496-09396c71-183e-4fca-bc6a-c2562fd7c96c.png)
+![adminFour](https://user-images.githubusercontent.com/112812835/221434617-e6cee0b4-5ba7-46ab-9d49-d893e5ff11b0.png)
 
 
