@@ -47,7 +47,7 @@ export default function AdminDashboard1() {
         textAlign={'center'}
         fontSize={'4xl'}
         fontWeight={'bold'}>
-          <Text>Welcone to MacMatch Admin Dashboard</Text>
+          <Text>Welcome to MacMatch Admin Dashboard</Text>
       </chakra.h1>
        <chakra.h2  textAlign={'center'}
         fontSize={'4xl'}

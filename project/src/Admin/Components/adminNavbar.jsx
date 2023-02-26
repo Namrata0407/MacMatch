@@ -41,14 +41,14 @@ import { BsCartCheck } from "react-icons/bs";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import { FiUsers } from "react-icons/fi";
 import AdminDashboard from '../Pages/AdminDashboard';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import AdiminRoutes from './AdminRoutes';
 import logo from "../Images/logo.png";
 import { logoutAdmin } from '../../Context/AuthContext';
 
 
 const LinkItems = [
-  { name: 'Dashboard',path: "/", icon: FiHome },
+  { name: 'Dashboard',path: "/admin", icon: FiHome },
   { name: 'Oders',path: "/admin/orders", icon: FiCompass },
   { name: 'Products',path: "/admin/products", icon: BsCartCheck },
   { name: 'Users',path: "/admin/users", icon: FiUsers },
@@ -154,6 +154,14 @@ const SidebarContent = ({ onClose, ...rest }) => {
   
   
   const MobileNav = ({ onOpen, ...rest }) => {
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+      localStorage.setItem("adminAuth", false);
+    
+       navigate("/")
+      window.location.reload();
+    }
     return (
       <Flex
         ml={{ base: 0, md: 60 }}
@@ -221,7 +229,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
                 borderColor={useColorModeValue('gray.200', 'gray.700')}>
                 <MenuItem>Settings</MenuItem>
                 <MenuDivider />
-                <MenuItem >Sign out</MenuItem>
+                <MenuItem onClick={()=>handleLogOut()}>Sign out</MenuItem>
               </MenuList>
             </Menu>
           </Flex>

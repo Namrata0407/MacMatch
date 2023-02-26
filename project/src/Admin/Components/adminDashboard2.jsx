@@ -55,7 +55,7 @@ export default function AdminDashboard2() {
         fontWeight={'bold'}>
   
       </chakra.h1>
-      <Heading>Welcone to MacMatch Admin Dashboard</Heading>
+      <Heading>Welcome to MacMatch Admin Dashboard</Heading>
       <Text fontSize={"25px"}>Here is outcome of our services</Text>
       <br />
   

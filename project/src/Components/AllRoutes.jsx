@@ -20,6 +20,7 @@ import Navbar2 from "./Navbar/Navbar2";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import AdminNavbar from "../Admin/Components/adminNavbar";
+import AdminLogin from "../Pages/AuthLoginAdmin";
 
 const AllRoutes = () => {
   return (
@@ -131,14 +132,18 @@ const AllRoutes = () => {
         }
       />
 
+      {/* <Route path="/adminlogin" element={<AdminLogin/>}/> */}
+      
+
       {/* admin pages */}
-      <Route
+      {/* <Route
         path="/admin"
         element={
 
           <PrivateRouteAdmin>
             <><AdminNavbar/>
-            <AdminDashboard /></>
+            <AdminDashboard />
+            </>
             
           </PrivateRouteAdmin>
         }
@@ -174,7 +179,7 @@ const AllRoutes = () => {
             <AdminPricing />
           </PrivateRouteAdmin>
         }
-      />
+      // /> */}
     </Routes>
   );
 };

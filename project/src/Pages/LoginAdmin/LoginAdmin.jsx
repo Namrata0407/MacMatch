@@ -14,13 +14,30 @@ import styles from "./LoginAdmin.module.css";
 import { useToast } from "@chakra-ui/react";
 
 function LoginAdmin() {
-  const [email, setemail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setemail] = useState("");
+  // const [password, setPassword] = useState("");
   const [load, setload] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { logoutUser } = useContext(AuthContext);
   const toast = useToast();
 
+  // *************************************************************
+  const navigate = useNavigate();
+  const userEmail = "admin@macmatch.com";
+  const userPass = "admin";
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+
+  const handleLoginAdmin = () => {
+      if(email === userEmail && userPass === password){
+          localStorage.setItem("adminAuth", "true");
+      navigate('/admin')
+      window.location.reload(true);
+      } else{
+          alert("Invalid credentials ");
+      }
+  }
+ // *************************************************************
   const wrongEmail = () => {
     toast({
       title: "Wrong Email or Password.",
@@ -44,6 +61,7 @@ function LoginAdmin() {
   };
 
   const submitLogin = async () => {
+
     setload(true);
     // console.log(load);
     try {
@@ -76,7 +94,7 @@ function LoginAdmin() {
 
       console.log(error);
     }
-    setemail("");
+    setEmail("");
     setPassword("");
   };
 
@@ -91,7 +109,7 @@ function LoginAdmin() {
           <Input
             placeholder="Your Email Address"
             value={email}
-            onChange={(e) => setemail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
           />
 
@@ -120,7 +138,8 @@ function LoginAdmin() {
             _hover={{
               bg: "rgb(4,4,4)",
             }}
-            onClick={submitLogin}
+            // onClick={submitLogin}
+            onClick={()=>handleLoginAdmin()}
           >
             <span className={styles.loginButton}>Sign in</span>
           </Button>
