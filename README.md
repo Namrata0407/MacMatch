@@ -80,6 +80,9 @@ it an e-commerce website which provides various types of electronic products wit
 ![cartpage](https://user-images.githubusercontent.com/112812835/221433764-29c8bf26-638a-44f3-b4db-c2a3e0d22ad4.png)
 ![cartpageTwo](https://user-images.githubusercontent.com/112812835/221433972-1f0be9d3-1f0f-4d63-9370-2b5b1fa15f4b.png)
 
+## SignUp Page
+![signupPage](https://user-images.githubusercontent.com/112812835/221438764-77024754-3028-4d13-b8fb-2b4348b4f7ae.png)
+
 ## Admin Page
 ![adminpageOne](https://user-images.githubusercontent.com/112812835/221434270-271f5d25-b2c3-4584-9d51-0fa77bb4e146.png)
 ![adminPageTwo](https://user-images.githubusercontent.com/112812835/221434353-9f34b0b7-7c43-4e9b-beef-155de9abbf06.png)
