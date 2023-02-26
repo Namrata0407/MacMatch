@@ -52,11 +52,20 @@ export const addToOrderItemAPI = async (payload) => {
   }
 };
 
-export const emptyCartAPI = async () => {
-  try {
-    let res = await axios.put(`https://mockserver-rny6.onrender.com/carts`, {});
-    return res.data;
-  } catch (error) {
-    console.log(error);
-  }
+export const emptyCartAPI = async (id) => {
+  // try {
+  //   let res = await axios.put(`https://mockserver-rny6.onrender.com/carts`, []);
+  //   return res.data;
+  // } catch (error) {
+  //   console.log(error);
+  // }
+
+  axios
+    .delete(`https://mockserver-rny6.onrender.com/carts/${id}`)
+    .then((response) => {
+      console.log("Data has been emptied");
+    })
+    .catch((error) => {
+      console.error("Error emptying data:", error);
+    });
 };

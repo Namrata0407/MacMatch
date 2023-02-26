@@ -91,12 +91,23 @@ const Checkout = () => {
         >
           In stock and ready to ship.
         </Text>
-        <SimpleGrid columns={3} gap={"20px"} p={"20px"}>
+        <SimpleGrid
+          columns={[1, 2, 3]}
+          gap={"20px"}
+          p={"20px"}
+          border="1px solid black"
+        >
           {data?.map((item) => {
             return (
-              <Flex gap={"10px"} p={"20px"}>
+              <Flex
+                direction={["column", "row", "row"]}
+                gap={"10px"}
+                p={"20px"}
+              >
                 <Image height={"60px"} src={item.img} alt="Dan Abramov" />
-                <Text textAlign={"start"}>{item.title}</Text>
+                <Text textAlign={["center", "start", "start"]}>
+                  {item.title}
+                </Text>
               </Flex>
             );
           })}
@@ -586,7 +597,9 @@ const Checkout = () => {
               </Grid>
               <Grid gap={4}>
                 <Text textAlign={"end"}>₹ {totalPrice}</Text>
-                <Text>or from ₹ {(totalPrice / 6).toFixed(2)} Per Month with EMI◊◊</Text>
+                <Text>
+                  or from ₹ {(totalPrice / 6).toFixed(2)} Per Month with EMI◊◊
+                </Text>
               </Grid>
             </Flex>
           </DrawerBody>
