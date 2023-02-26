@@ -62,6 +62,7 @@ export default function Checkout() {
 
   useEffect(() => {
     dispatch(getCartProduct());
+    dispatch(addToOrderItem(cartData));
   }, []);
 
   const handleNext = () => {
@@ -115,10 +116,12 @@ export default function Checkout() {
                 confirmation, and will send you an update when your order has
                 shipped.
               </Typography>
-
               {setTimeout(() => {
-                dispatch(addToOrderItem(cartData))
-                dispatch(emptyCart());
+                for (let i = 0; i < cartData.length; i++) {
+                  dispatch(emptyCart(cartData[i]["id"]));
+                }
+              }, 10)}
+              {setTimeout(() => {
                 navigate("/");
               }, 3000)}
             </React.Fragment>

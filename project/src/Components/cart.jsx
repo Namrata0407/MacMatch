@@ -59,20 +59,29 @@ const Cart = ({
         >
           {" "}
           {/* image right */}
-          <Grid textAlign="start" p={6}>
+          <Grid textAlign="start" w={["100%", "50%"]} p={6}>
             {" "}
             {/* Ist box inside image right */}
-            <Text textAlign={["center","start","start"]} fontSize={{ base: "xl", md: "lg", lg: "2xl" }} fontWeight={[800,600,600]}>{title}</Text>
-            <Text textAlign={["center","start","start"]} fontSize={{ base: "sm", md: "sm", lg: "md" }}>
+            <Text
+              textAlign={["center", "start", "start"]}
+              fontSize={{ base: "xl", md: "lg", lg: "2xl" }}
+              fontWeight={[800, 600, 600]}
+            >
+              {title}
+            </Text>
+            <Text
+              textAlign={["center", "start", "start"]}
+              fontSize={{ base: "sm", md: "sm", lg: "md" }}
+            >
               Pay 16% pa for 6 months
             </Text>
           </Grid>
-          <Grid gap={10}>
+          <Grid w={["100%", "50%"]} gap={10}>
             {" "}
             {/* IInd box inside image right */}
             <Flex justify="space-between" p={4}>
               <Flex>
-                <Text fontSize={{ base: "sm", md: "sm", lg: "md" }} mr={4}>
+                <Text fontSize={{ base: "14px", md: "14px", lg: "md" }} mr={1}>
                   Quantity:
                 </Text>
                 <select
