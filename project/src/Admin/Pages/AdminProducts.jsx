@@ -75,7 +75,7 @@ let  params = {};
         <Heading >All Products</Heading>
 
 
-        <Input
+        {/* <Input
       value={searchQuery}
       // onChange={handleSearchdata}
 
@@ -85,7 +85,7 @@ let  params = {};
     placeholder='Search Product'
     _placeholder={{ color: 'inherit' }}
    
-  />
+  /> */}
 
 
 
