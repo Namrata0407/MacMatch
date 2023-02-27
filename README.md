@@ -1,5 +1,5 @@
 <h1>MacMatch</h1>
-it an e-commerce website which provides various types of electronic products with online services.
+It an e-commerce website which provides various types of electronic products with online services.
 
 ## [Vercel Deployed Link](https://murky-pan-2202.vercel.app/)
 
