@@ -23,7 +23,10 @@ It an e-commerce website which provides various types of electronic products wit
 - Cart Page
 
   - Total Summary
+  - FAQ Sections
   - Checkout Page
+  - Shipping Page
+  - Payment Page
  
 - Login & SignUp Page
 
