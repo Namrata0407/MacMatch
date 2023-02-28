@@ -57,6 +57,7 @@ It an e-commerce website which provides various types of electronic products wit
 
 - React
 - Redux
+- Redux-Thunk
 - Chakra UI
 - Material UI 
 
@@ -82,6 +83,10 @@ It an e-commerce website which provides various types of electronic products wit
 ## Cart Page
 ![cartpage](https://user-images.githubusercontent.com/112812835/221433764-29c8bf26-638a-44f3-b4db-c2a3e0d22ad4.png)
 ![cartpageTwo](https://user-images.githubusercontent.com/112812835/221433972-1f0be9d3-1f0f-4d63-9370-2b5b1fa15f4b.png)
+![ShippingPage](https://user-images.githubusercontent.com/112800148/221985586-4fcf6c69-a207-4a52-b73e-9e3a671b906f.png)
+![ShippingPageTwo](https://user-images.githubusercontent.com/112800148/221985611-e01bb656-4291-426a-980b-f899630dcf54.png)
+![ShippingPageThree](https://user-images.githubusercontent.com/112800148/221985694-7c8b986f-6588-4165-8397-4cfbb78333d4.png)
+
 
 ## SignUp Page
 ![signupPage](https://user-images.githubusercontent.com/112812835/221438764-77024754-3028-4d13-b8fb-2b4348b4f7ae.png)
