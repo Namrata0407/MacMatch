@@ -21,6 +21,7 @@ import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import AdminNavbar from "../Admin/Components/adminNavbar";
 import AdminLogin from "../Pages/AuthLoginAdmin";
+import PhoneSignUp from "../Pages/Login/PhoneSignUp";
 
 const AllRoutes = () => {
   return (
@@ -132,54 +133,18 @@ const AllRoutes = () => {
         }
       />
 
-      {/* <Route path="/adminlogin" element={<AdminLogin/>}/> */}
-      
+<Route path='/phone' element={
+  <>
+  <Navbar />
+            <Navbar2 />
 
-      {/* admin pages */}
-      {/* <Route
-        path="/admin"
-        element={
+           <PhoneSignUp/>
+            <Footer />
+  </>
 
-          <PrivateRouteAdmin>
-            <><AdminNavbar/>
-            <AdminDashboard />
-            </>
-            
-          </PrivateRouteAdmin>
-        }
-      />
-      <Route
-        path="/admin/orders"
-        element={
-          <PrivateRouteAdmin>
-            <AdminOrders />
-          </PrivateRouteAdmin>
-        }
-      />
-      <Route
-        path="/admin/products"
-        element={
-          <PrivateRouteAdmin>
-            <AdminProducts />
-          </PrivateRouteAdmin>
-        }
-      />
-      <Route
-        path="/admin/users"
-        element={
-          <PrivateRouteAdmin>
-            <AdminUsers />
-          </PrivateRouteAdmin>
-        }
-      />
-      <Route
-        path="/admin/pricing"
-        element={
-          <PrivateRouteAdmin>
-            <AdminPricing />
-          </PrivateRouteAdmin>
-        }
-      // /> */}
+  }/>
+
+
     </Routes>
   );
 };
