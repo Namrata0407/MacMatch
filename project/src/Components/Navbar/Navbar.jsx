@@ -206,9 +206,10 @@ export default function Navbar() {
               </Button>
 
               <Button className={styles.name}>
-                {localStorage.getItem("name")}
+                {localStorage.getItem("photoUrl") ? <img style={{width:"25px",height:"25px",borderRadius:"50%"}} src={`${localStorage.getItem("photoUrl")}`} alt="image" /> :localStorage.getItem("name")}
                 <span style={{ marginLeft: "5px" }}>
-                  <FaUserCircle />{" "}
+                {localStorage.getItem("photoUrl") ? " " :<FaUserCircle />}
+    
                 </span>
               </Button>
               <>
