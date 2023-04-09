@@ -17,7 +17,7 @@ const CartPage = () => {
   const handleTotalPrice = () => {
     let subTot = data?.reduce(
       (acc, item) => acc + item.quantity * item.price,
-      1
+      0
     );
     setSubTotal(subTot);
     localStorage.setItem("totalPrice", subTot);
