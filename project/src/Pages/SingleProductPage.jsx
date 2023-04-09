@@ -45,10 +45,11 @@ import { addToCartFn } from '../Redux/cart/cart.action';
   }
   let auth=localStorage.getItem('name');
 
+  console.log(id);
 
   useEffect(()=>{
     GetData()
-        },[])
+        },[id])
   return (
     <Container maxW={'7xl'}>
       <SimpleGrid
