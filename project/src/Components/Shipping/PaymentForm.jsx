@@ -5,9 +5,12 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 
 export default function PaymentForm() {
-  const [name, setName] = useState("Somesh Rawat");
+  const {user} = useContext(AuthContext)
+  const [name, setName] = useState(user.displayName);
   const [card, setCard] = useState("");
   const [date, setDate] = useState("");
 

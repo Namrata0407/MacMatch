@@ -5,21 +5,55 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import Pincode from 'react-pincode';
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
 
 export default function AddressForm() {
-  const [fname, setFName] = useState("Somesh");
-  const [lname, setLName] = useState("Rawat");
-  const [address, setAddress] = useState("Dhrampur");
-  const [city, setCity] = useState("Dehradun");
-  const [state, setState] = useState("Uttarakhand");
-  const [code, setCode] = useState("248001");
-  const [country, setCountry] = useState("India");
+  const {user} = useContext(AuthContext);
+  const [fname, setFName] = useState("");
+  const [lname, setLName] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [code, setCode] = useState("");
+  const [country, setCountry] = useState("");
+  const [pincodeData, setPincodeData] = useState('');
 
-  const details = {fname, lname, address, city, state, code, country};
+  //setPincodeData(code)
 
-  localStorage.setItem("details", JSON.stringify(details));
+  // const details = {fname, lname, address, city, state, code, country};
+
+  // localStorage.setItem("details", JSON.stringify(details));
 
   // console.log(fname);
+  console.log(user);
+ 
+  React.useEffect(() =>{
+    if(pincodeData.city){
+      console.log("dsjksjdjnsjnds");
+      let lengthName = user.displayName.split(" ").length;
+      setFName(user.displayName.split(" ")[0]);
+      setLName(user.displayName.split(" ")[lengthName-1]);
+      setCity(pincodeData.district);
+      setState(pincodeData.stateName);
+      setCountry("India");
+      setAddress(pincodeData.areaName +" "+ pincodeData.city+ " "+pincodeData.stateName);
+    }
+  
+    const details = {fname, lname, address, city, state, code, country};
+
+    localStorage.setItem("details", JSON.stringify(details));
+  },[pincodeData.areaName])
+
+  if(pincodeData.city  && city === ""){
+    console.log("dsjksjdjnsjnds")
+    setCity(pincodeData.district);
+    setState(pincodeData.stateName);
+    setCountry("India");
+    setAddress(pincodeData.areaName +" "+ pincodeData.city+ " "+pincodeData.stateName);
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -100,7 +134,7 @@ export default function AddressForm() {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          {/* <TextField
             required
             id="zip"
             name="zip"
@@ -108,9 +142,33 @@ export default function AddressForm() {
             fullWidth
             autoComplete="shipping postal-code"
             variant="standard"
-            onChange={(e) => setCode(e.target.value)}
+            onChange={(e) => { 
+              setCode(e.target.value)
+            }}
             value={code}
-          />
+          /> */}
+          <Pincode 
+      
+        Container={{height:"10px"}}
+        //   pincodeContainer={{height:"0px"}}
+           pincodeInput={{width:'200px',height:"20px",marginTop:"25px",borderBottom:"1px solid grey"}}
+           cityContainer={{height:"0px"}}
+           districtContainer={{height:"0px"}}
+           districtInput={{width:'200px',opacity:"0",height:"0px"}}
+           stateInput={{opacity:"0",height:"0px",padding:"0px"}}
+           stateContainer={{height:"0px"}}
+           cityInput={{opacity:"0",height:"0px",padding:"0px"}}
+           areaInput={{width:'200px',opacity:"0",height:"0px"}}
+           areaContainer={{height:"0px"}}
+           invalidError="Please check pincode"
+           lengthError="check length"
+           getData={(data) =>{
+              setPincodeData(data)
+              console.log(data)
+             }}
+         />
+   
+
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -125,6 +183,30 @@ export default function AddressForm() {
             value={country}
           />
         </Grid>
+
+{/* <div style={{opacity}}></div> */}
+        {/* <Pincode 
+      
+        Container={{height:"10px"}}
+     //   pincodeContainer={{height:"0px"}}
+        pincodeInput={{width:'200px',height:"20px"}}
+        cityContainer={{height:"0px"}}
+        districtContainer={{height:"0px"}}
+        districtInput={{width:'200px',opacity:"0",height:"0px"}}
+        stateInput={{opacity:"0",height:"0px",padding:"0px"}}
+        stateContainer={{height:"0px"}}
+        cityInput={{opacity:"0",height:"0px",padding:"0px"}}
+        areaInput={{width:'200px',opacity:"0",height:"0px"}}
+        areaContainer={{height:"0px"}}
+        invalidError="Please check pincode"
+        lengthError="check length"
+        getData={(data) =>{
+           setPincodeData(data)
+           console.log(data)
+          }}
+      /> */}
+
+      
         <Grid item xs={12}>
           <FormControlLabel
             control={
