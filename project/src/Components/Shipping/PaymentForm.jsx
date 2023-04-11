@@ -13,6 +13,7 @@ export default function PaymentForm() {
   const [name, setName] = useState(user.displayName);
   const [card, setCard] = useState("");
   const [date, setDate] = useState("");
+  const [cvv, setcvv] = useState("")
 
   const cardDetails = {
     name,
@@ -27,6 +28,8 @@ export default function PaymentForm() {
       <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
+
+   
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <TextField
@@ -38,6 +41,7 @@ export default function PaymentForm() {
             variant="standard"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            error={name.length<1 ? true : false}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -49,18 +53,27 @@ export default function PaymentForm() {
             autoComplete="cc-number"
             variant="standard"
             value={card}
+            type="number"
+            helperText="please enter valid 16 digit number"
             onChange={(e) => setCard(e.target.value)}
+            error={card.length!==16 ? true : false}
+           
           />
         </Grid>
         <Grid item xs={12} md={6}>
+          <p style={{fontSize:"13px"}}>Expiry date*</p>
           <TextField
             required
             id="expDate"
-            label="Expiry date"
+            // label="Expiry date"
             fullWidth
             autoComplete="cc-exp"
+            type="date"
+            helperText="card expiry date"
             variant="standard"
+            value={date}
             onChange={(e) => setDate(e.target.value)}
+            error={date.length<1 ? true : false}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -72,6 +85,10 @@ export default function PaymentForm() {
             fullWidth
             autoComplete="cc-csc"
             variant="standard"
+            value={cvv}
+            type="number"
+            onChange={(e) => setcvv(e.target.value)}
+            error={cvv.length!==3 ? true : false}
           />
         </Grid>
         <Grid item xs={12}>
@@ -81,6 +98,8 @@ export default function PaymentForm() {
           />
         </Grid>
       </Grid>
+     
+      
     </React.Fragment>
   );
 }

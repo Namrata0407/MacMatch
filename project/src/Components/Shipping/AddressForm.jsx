@@ -8,6 +8,8 @@ import Checkbox from "@mui/material/Checkbox";
 import Pincode from 'react-pincode';
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
+import { grey, red } from "@mui/material/colors";
+import { Text } from "@chakra-ui/react";
 
 export default function AddressForm() {
   const {user} = useContext(AuthContext);
@@ -18,15 +20,9 @@ export default function AddressForm() {
   const [state, setState] = useState("");
   const [code, setCode] = useState("");
   const [country, setCountry] = useState("");
-  const [pincodeData, setPincodeData] = useState('');
+  const [pincodeData, setPincodeData] = useState({});
 
-  //setPincodeData(code)
 
-  // const details = {fname, lname, address, city, state, code, country};
-
-  // localStorage.setItem("details", JSON.stringify(details));
-
-  // console.log(fname);
   console.log(user);
  
   React.useEffect(() =>{
@@ -134,22 +130,12 @@ export default function AddressForm() {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          {/* <TextField
-            required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
-            fullWidth
-            autoComplete="shipping postal-code"
-            variant="standard"
-            onChange={(e) => { 
-              setCode(e.target.value)
-            }}
-            value={code}
-          /> */}
+         
+         
           <Pincode 
       
         Container={{height:"10px"}}
+       
         //   pincodeContainer={{height:"0px"}}
            pincodeInput={{width:'200px',height:"20px",marginTop:"25px",borderBottom:"1px solid grey"}}
            cityContainer={{height:"0px"}}
@@ -184,27 +170,6 @@ export default function AddressForm() {
           />
         </Grid>
 
-{/* <div style={{opacity}}></div> */}
-        {/* <Pincode 
-      
-        Container={{height:"10px"}}
-     //   pincodeContainer={{height:"0px"}}
-        pincodeInput={{width:'200px',height:"20px"}}
-        cityContainer={{height:"0px"}}
-        districtContainer={{height:"0px"}}
-        districtInput={{width:'200px',opacity:"0",height:"0px"}}
-        stateInput={{opacity:"0",height:"0px",padding:"0px"}}
-        stateContainer={{height:"0px"}}
-        cityInput={{opacity:"0",height:"0px",padding:"0px"}}
-        areaInput={{width:'200px',opacity:"0",height:"0px"}}
-        areaContainer={{height:"0px"}}
-        invalidError="Please check pincode"
-        lengthError="check length"
-        getData={(data) =>{
-           setPincodeData(data)
-           console.log(data)
-          }}
-      /> */}
 
       
         <Grid item xs={12}>

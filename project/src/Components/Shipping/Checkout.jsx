@@ -59,6 +59,7 @@ export default function Checkout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cartData = useSelector((store) => store.cartReducer.cart);
+ 
 
   useEffect(() => {
     dispatch(getCartProduct());
