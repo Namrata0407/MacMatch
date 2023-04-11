@@ -1,7 +1,7 @@
 <h1>MacMatch</h1>
 It an e-commerce website which provides various types of electronic products with online services.
 
-## [Vercel Deployed Link](https://project-roan-alpha.vercel.app/)
+## [Vercel Deployed Link](https://project-zeta-lilac.vercel.app/)
 
 ## Pages & Features : -
 - Home Page
