@@ -51,7 +51,7 @@ It an e-commerce website which provides various types of electronic products wit
 
  `Email ID:- As given while Signup`
  `Password:- As given while Signup`
- 
+ `User can login with Google/Phone/email`
   
 ## Tech Stacks Used
 
@@ -88,8 +88,10 @@ It an e-commerce website which provides various types of electronic products wit
 ![ShippingPageThree](https://user-images.githubusercontent.com/112800148/221985694-7c8b986f-6588-4165-8397-4cfbb78333d4.png)
 
 
-## SignUp Page
-![signupPage](https://user-images.githubusercontent.com/112812835/221438764-77024754-3028-4d13-b8fb-2b4348b4f7ae.png)
+## SignUp Page![signupPage]
+
+
+![signupPage](https://user-images.githubusercontent.com/112812835/234344574-dea7baaa-c9e9-477d-ae24-26a7ed25ed28.png)
 
 ## Admin Page
 ![adminpageOne](https://user-images.githubusercontent.com/112812835/221434270-271f5d25-b2c3-4584-9d51-0fa77bb4e146.png)
