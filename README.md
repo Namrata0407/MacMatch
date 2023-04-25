@@ -34,6 +34,7 @@ It an e-commerce website which provides various types of electronic products wit
   - Data Store In Local Storage
   - Signup user name displayed on Navbar
   - After logged in cart item will displayed on Navbar
+  - After login from google, user's image will displayed on Navbar
   
   
  - Admin Page
