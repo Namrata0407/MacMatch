@@ -1,7 +1,7 @@
 <h1>MacMatch</h1>
 It an e-commerce website which provides various types of electronic products with online services.
 
-## [Vercel Deployed Link](https://macmatch.vercel.app/)
+## [Netlify Deployed Link](dapper-brigadeiros-9419df.netlify.app/)
 
 ## Pages & Features : -
 - Home Page
